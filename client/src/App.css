@@ -1,0 +1,27 @@
+.navBar {
+    padding: 10px;
+    text-align: center;
+    background: #DADADA;
+}
+
+.navItem {
+    padding-left: 40px;
+    padding-right: 40px;
+    display: inline-block;
+    color: black;
+}
+
+.button {
+    border-radius: 20px;
+    border: none;
+    padding: 4px;
+}
+.isSubmit {
+    background: lightgreen;
+}
+.isCancel {
+    background: lightcoral;
+}
+.isEdit {
+    background: lightblue;
+}
