@@ -16,7 +16,7 @@ class Contact extends React.Component {
 			<div>
 				{
 					edit ?
-					<form onSubmit={() => editPage(page.id, page)}>
+					<form onSubmit={() => editPage(2)}>
 						<textarea name={'text1'} value={page.text1 ?? ""} onChange={handleChange}/>
 						<br/>
 						<textarea name={'text2'} value={page.text2 ?? ""} onChange={handleChange}/>

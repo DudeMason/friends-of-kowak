@@ -11,15 +11,27 @@ export default class PageProvider extends Component {
 	showPage = (id) => {
 		axios.get(`/api/pages/${id}`)
 		.then(res => {
-			this.setState({page: res.data})
+			this.setState({
+				page: {
+					text1: res.data.text1,
+					text2: res.data.text2,
+					text3: res.data.text3,
+					text4: res.data.text4,
+					text5: res.data.text5,
+					text6: res.data.text6,
+					text7: res.data.text7,
+					text8: res.data.text8,
+					text9: res.data.text9
+				}
+			})
 		})
 		.catch(err => {
 			console.log(err)
 		})
 	}
 
-	editPage = (id, page) => {
-		axios.put(`/api/pages/${id}`, page)
+	editPage = (id) => {
+		axios.put(`/api/pages/${id}`, this.state.page)
 		.then(results => {
 			this.setState({page: results.data})
 		})
