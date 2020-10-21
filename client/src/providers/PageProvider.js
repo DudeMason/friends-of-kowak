@@ -31,12 +31,18 @@ export default class PageProvider extends Component {
 	}
 
 	editPage = (id) => {
-		axios.put(`/api/pages/${id}`, this.state.page)
-		.then(results => {
-			this.setState({page: results.data})
+		axios.get('/api/auth/validate_token')
+		.then(() => {
+			axios.put(`/api/pages/${id}`, this.state.page)
+			.then(results => {
+				this.setState({page: results.data})
+			})
+			.catch(err => {
+				console.log(err)
+			})
 		})
-		.catch(err => {
-			console.log(err)
+		.catch(() => {
+			alert("Must be a user to edit!")
 		})
 	}
 
@@ -51,7 +57,6 @@ export default class PageProvider extends Component {
 				...this.state,
 				editPage: this.editPage,
 				showPage: this.showPage,
-				toggleEdit: this.toggleEdit,
 				handleChange: this.handleChange,
 			}}>
 				{this.props.children}

@@ -7,7 +7,7 @@ class Register extends React.Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const {email, password, passwordConfirmation} = this.state;
-		const {auth: {handleRegister,}, history,} = this.props;
+		const {auth: {handleRegister}, history,} = this.props;
 
 		if (password === passwordConfirmation)
 			handleRegister({email, password, passwordConfirmation}, history);
@@ -24,8 +24,9 @@ class Register extends React.Component {
 		const {email, password, passwordConfirmation,} = this.state;
 
 		return (
-			<div>
-					<form onSubmit={this.handleSubmit} style={{width: '90%'}}>
+			<div align='center'>
+				<h1>Register</h1>
+				<form onSubmit={this.handleSubmit}>
 						<input
 							required
 							autoFocus
@@ -46,7 +47,7 @@ class Register extends React.Component {
 							required
 							name='passwordConfirmation'
 							value={passwordConfirmation}
-							placeholder='Password Confirmation'
+							placeholder='Confirmation'
 							type='password'
 							onChange={this.handleChange}
 						/>
@@ -61,7 +62,7 @@ export default class ConnectedRegister extends React.Component {
 	render() {
 		return (
 			<AuthConsumer>
-				{auth => <Register {...this.props} auth={auth}/>}
+				{auth => <Register history={this.props.history} auth={auth}/>}
 			</AuthConsumer>
 		)
 	}

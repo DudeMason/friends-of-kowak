@@ -16,30 +16,38 @@ import { AuthConsumer } from "./providers/AuthProvider";
 
 const App = ({canRegister, edit}) => (
 
-	<div>
-		<Navbar/>
-		<FetchUser>
-			<Switch>
-				{
-					edit ?
-					<>
+	<>
+		{
+			edit ?
+			<div>
+				<Navbar/>
+				<FetchUser>
+					<Switch>
 						<Route exact path='/' component={HomeForm}/>
 						<Route exact path='/contact' component={ContactForm}/>
 						<Route exact path='/about' component={AboutForm}/>
-					</>
-							 :
-					<>
+						<Route exact path='/login' component={Login}/>
+						{canRegister ? <Route exact path='/register' component={Register}/> : null}
+						<Route component={NoMatch}/>
+					</Switch>
+				</FetchUser>
+			</div>
+					 :
+			<div>
+				<Navbar/>
+				<FetchUser>
+					<Switch>
 						<Route exact path='/' component={Home}/>
 						<Route exact path='/contact' component={Contact}/>
 						<Route exact path='/about' component={About}/>
-					</>
-				}
-				<Route exact path='/login' component={Login}/>
-				{canRegister ? <Route exact path='/register' component={Register}/> : null}
-				<Route component={NoMatch}/>
-			</Switch>
-		</FetchUser>
-	</div>
+						<Route exact path='/login' component={Login}/>
+						{canRegister ? <Route exact path='/register' component={Register}/> : null}
+						<Route component={NoMatch}/>
+					</Switch>
+				</FetchUser>
+			</div>
+		}
+	</>
 )
 
 const ConnectedApp = () => {
@@ -47,7 +55,7 @@ const ConnectedApp = () => {
 		<AuthConsumer>
 			{
 				value => (
-					<App canRegister={value.canRegister}/>
+					<App canRegister={value.canRegister} edit={value.edit}/>
 				)
 			}
 		</AuthConsumer>

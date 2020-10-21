@@ -4,27 +4,8 @@ import { AuthConsumer } from "../providers/AuthProvider";
 
 class Navbar extends React.Component {
 
-	rightNavItems = () => {
-		const {user, handleLogout, toggleEdit, edit} = this.props.auth;
-
-		if (user) {
-			return (
-				<div>
-					{
-						edit ?
-						<button onClick={toggleEdit} className={'button isCancel'}>
-							<span role={'img'} aria-label={'Cancel'}>✘</span>
-						</button>
-								 :
-						<button onClick={toggleEdit} className={'button isEdit'}>✎</button>
-					}
-					<button onClick={() => handleLogout(this.props.history)}>Logout</button>
-				</div>
-			)
-		}
-	}
-
 	render() {
+		const {user, handleLogout, toggleEdit, edit} = this.props.auth;
 		return (
 			<div className={'navBar'}>
 				<Link to={'/'}>
@@ -36,7 +17,24 @@ class Navbar extends React.Component {
 				<Link to={'/about'}>
 					<span className={'navItem'}>About</span>
 				</Link>
-				{this.rightNavItems()}
+				{
+					user.email ?
+					<>
+						{
+							edit ?
+							<button onClick={() => toggleEdit()} className={'button isCancel edit'}>
+								<span role={'img'} aria-label={'Cancel'}>✘</span>
+							</button>
+									 :
+							<button onClick={() => toggleEdit()} className={'button isEdit edit'}>✎</button>
+						}
+						<button className={'login'} onClick={() => handleLogout(this.props.history)}>Logout</button>
+					</>
+							 :
+					<Link to={'/login'}>
+						<span className={'login'}>Login</span>
+					</Link>
+				}
 			</div>
 		)
 	}

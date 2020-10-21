@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-const AuthContext = React.createContext( undefined);
+const AuthContext = React.createContext(undefined);
 export const AuthConsumer = AuthContext.Consumer;
 
 class AuthProvider extends Component {
-	state = {user: null, canRegister: false, edit: false}
+	state = {user: {email: null, password: null}, canRegister: false, edit: false}
 
 	componentDidMount() {
 		axios.get('/api/users')
@@ -14,7 +14,6 @@ class AuthProvider extends Component {
 				this.setState({canRegister: true})
 			} else {
 				this.setState({canRegister: false})
-				console.log('Max users')
 			}
 		})
 		.catch(err => {
@@ -28,13 +27,14 @@ class AuthProvider extends Component {
 			if (res.data.length <= 1) {
 				axios.post('/api/auth', user)
 				.then(result => {
-					this.setState({user: result.data})
+					this.setState({user: result.data.data}, () => {
+						history.push('/')
+					})
 					this.componentDidMount()
-					history.push('/citas')
 				})
 				.catch(err => console.log(err))
 			} else {
-				alert("Too many users.")
+				alert("Already at max users.")
 			}
 		})
 		.catch(err => {
@@ -45,8 +45,9 @@ class AuthProvider extends Component {
 	handleLogin = (user, history) => {
 		axios.post('/api/auth/sign_in', user)
 		.then(res => {
-			this.setState({user: res.data.data})
-			history.push('/citas')
+			this.setState({user: res.data.data}, () => {
+				history.push('/')
+			})
 		})
 		.catch(err => console.log(err))
 	}
@@ -54,7 +55,7 @@ class AuthProvider extends Component {
 	handleLogout = (history) => {
 		axios.delete('/api/auth/sign_out')
 		.then(() => {
-			this.setState({user: null})
+			this.setState({user: {email: null, password: null}})
 			history.push('/login')
 		})
 		.catch(err => console.log(err))
@@ -68,11 +69,12 @@ class AuthProvider extends Component {
 		return (
 			<AuthContext.Provider value={{
 				...this.state,
+				toggleEdit: this.toggleEdit,
 				handleRegister: this.handleRegister,
 				handleLogin: this.handleLogin,
 				handleLogout: this.handleLogout,
-				authenticated: this.state.user !== null,
-				setUser: (user) => this.setState({user})
+				authenticated: this.state.user.email !== null,
+				setUser: (user) => this.setState({user: {email: user.email, password: user.password}})
 			}}>
 				{this.props.children}
 			</AuthContext.Provider>

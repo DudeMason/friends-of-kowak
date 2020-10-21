@@ -18,7 +18,7 @@ class Login extends React.Component {
 		const {email, password,} = this.state;
 
 		return (
-			<div style={{height: '100vh'}} align='center'>
+			<div align='center'>
 					<h1>Login</h1>
 					<form onSubmit={this.handleSubmit} style={{width: '90%'}}>
 						<input
@@ -48,7 +48,7 @@ export default class ConnectedLogin extends React.Component {
 	render() {
 		return (
 			<AuthConsumer>
-				{auth => <Login {...this.props} auth={auth}/>}
+				{auth => <Login history={this.props.history} auth={auth}/>}
 			</AuthConsumer>
 		)
 	}
