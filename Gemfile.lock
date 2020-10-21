@@ -74,6 +74,10 @@ GEM
       devise (> 3.5.2, < 5)
       rails (>= 4.2.0, < 6.1)
       sprockets (= 3.7.2)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
     erubi (1.9.0)
     ffi (1.13.1)
     globalid (0.4.2)
@@ -168,6 +172,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   devise_token_auth (~> 1.1, >= 1.1.4)
+  dotenv-rails (~> 2.7, >= 2.7.5)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
