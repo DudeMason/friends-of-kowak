@@ -6,7 +6,7 @@ export const PageConsumer = PageContext.Consumer;
 
 export default class PageProvider extends Component {
 
-	state = {page: {}, edit: false}
+	state = {page: {}}
 
 	showPage = (id) => {
 		axios.get(`/api/pages/${id}`)
@@ -43,10 +43,6 @@ export default class PageProvider extends Component {
 	handleChange = (e) => {
 		const {name, value} = e.target
 		this.setState({page: {...this.state.page, [name]: value}})
-	}
-
-	toggleEdit = () => {
-		this.setState({edit: !this.state.edit})
 	}
 
 	render() {

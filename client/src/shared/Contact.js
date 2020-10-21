@@ -9,46 +9,21 @@ class Contact extends React.Component {
 
 	render() {
 
-		const {edit, page, editPage, handleChange, toggleEdit} = this.props.value
+		const {page} = this.props.value
 
 		return (
 
 			<div>
-				{
-					edit ?
-					<form onSubmit={() => editPage(2)}>
-						<textarea name={'text1'} value={page.text1 ?? ""} onChange={handleChange}/>
-						<br/>
-						<textarea name={'text2'} value={page.text2 ?? ""} onChange={handleChange}/>
-						<br/>
-						<textarea name={'text3'} value={page.text3 ?? ""} onChange={handleChange}/>
-						<br/>
-						<textarea name={'text4'} value={page.text4 ?? ""} onChange={handleChange}/>
-						<br/>
-						<textarea name={'text5'} value={page.text5 ?? ""} onChange={handleChange}/>
-						<br/>
-						<button onClick={toggleEdit} className={'button isCancel'}>
-							<span role={'img'} aria-label={'Cancel'}>✘</span>
-						</button>
-						<button type={'submit'} className={'button isSubmit'}>
-							<span role={'img'} aria-label={'Submit'}>✔︎</span>
-						</button>
-					</form>
-							 :
-					<>
-						{page.text1}
-						<br/>
-						{page.text2}
-						<br/>
-						{page.text3}
-						<br/>
-						{page.text4}
-						<br/>
-						{page.text5}
-						<br/>
-						<button onClick={toggleEdit} className={'button isEdit'}>✎</button>
-					</>
-				}
+				{page.text1}
+				<br/>
+				{page.text2}
+				<br/>
+				{page.text3}
+				<br/>
+				{page.text4}
+				<br/>
+				{page.text5}
+				<br/>
 			</div>
 		)
 	}
