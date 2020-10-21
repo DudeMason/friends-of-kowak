@@ -55,7 +55,7 @@ class AuthProvider extends Component {
 	handleLogout = (history) => {
 		axios.delete('/api/auth/sign_out')
 		.then(() => {
-			this.setState({user: {email: null, password: null}})
+			this.setState({user: {email: null, password: null}, edit: false})
 			history.push('/login')
 		})
 		.catch(err => console.log(err))
