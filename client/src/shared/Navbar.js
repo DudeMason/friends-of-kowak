@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter, } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { AuthConsumer } from "../providers/AuthProvider";
 
 class Navbar extends React.Component {
@@ -28,11 +28,13 @@ class Navbar extends React.Component {
 									 :
 							<button onClick={() => toggleEdit()} className={'button isEdit edit'}>✎</button>
 						}
-						<button className={'login'} onClick={() => handleLogout(this.props.history)}>Logout</button>
+						<Link to={''} onClick={() => handleLogout(this.props.history)}>
+							<span className={'login navItem'}>Logout</span>
+						</Link>
 					</>
 							 :
 					<Link to={'/login'}>
-						<span className={'login'}>Login</span>
+						<span className={'login navItem'}>Login</span>
 					</Link>
 				}
 			</div>
