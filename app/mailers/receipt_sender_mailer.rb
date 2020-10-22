@@ -5,56 +5,57 @@ class ReceiptSenderMailer < ApplicationMailer
 	require 'sendgrid-ruby'
 	include SendGrid
 
+	#@todo: adjust this when the time comes to match the required parameters
 	def send_receipt(params)
 
-		mail = JSON.parse("{
+		body = I18n.t("payment_submitted", params: params[:first_name], params2: params[:last_name], params3: params[:phone1], params4: params[:phone2], params5: params[:phone3], var: Date.parse(params[:date]).strftime("%m/%d/%Y"), params6: params[:time], params7: params[:company], params8: params[:message])
+
+		email = {
 			'personalizations': [
-        {
-          'to': [
-            {
-              'email': '#{params[:email]}'
-            }
-          ],
-          'subject': 'Donation Receipt!'
-        }
-      ],
-      'from': {
-        'email': 'no-reply@friendsofkowak.com'
+				{
+					'to': [
+						{
+							'email': params[:email]
+						}
+					],
+					'subject': 'Donation Receipt'
+				}
+			],
+			'from': {
+				'email': 'no-reply@friendsofkowak.com',
 				'name': 'Friends of Kowak'
-      },
-      'content': [
-        {
-          'type': 'text/html',
-          'value': #{I18n.t('payment_submitted', params: params[:first_name], params2: params[:last_name], params3: params[:phone1], params4: params[:phone2], params5: params[:phone3], var: Date.parse(params[:date]).strftime("%m/%d/%Y"), params6: params[:time], params7: params[:company], params8: params[:message])}
-        }
-      ],
+			},
+			'content': [
+				{
+					'type': 'text/html',
+					'value': body
+				}
+			],
 			'mail_settings': {
 				'sandbox_mode': {
 					'enable': true
 				}
 			}
-		}")
+		}
 
-		# kowak_email = Email.new(email: 'no-reply@friendsofkowak.com', name: 'Friends of Kowak')
-		# client_email = Email.new(email: "#{params[:email]}")
+		mail = JSON.parse(email.to_json)
+
+		# from_email = Email.new(email: 'no-reply@friendsofkowak.com', name: 'Friends of Kowak')
+		# to_email = Email.new(email: params[:email])
 		#
-		# from = kowak_email
-		# to = client_email
-		# subject = 'Thank You For Your Donation!'
-		# content = Content.new(type: 'text/html', value: I18n.t('payment_submitted', params: params[:first_name], params2: params[:last_name], params3: params[:phone1], params4: params[:phone2], params5: params[:phone3], var: Date.parse(params[:date]).strftime("%m/%d/%Y"), params6: params[:time], params7: params[:company], params8: params[:message]))
+		# from    = from_email
+		# to      = to_email
+		# subject = 'Donation Receipt'
+		# content = Content.new(type: 'text/html', value: I18n.t('appointment_notification', params: params[:first_name], params2: params[:last_name], params3: params[:phone1], params4: params[:phone2], params5: params[:phone3], var: Date.parse(params[:date]).strftime("%m/%d/%Y"), params6: params[:time], params7: params[:company], params8: params[:message]))
 		#
 		# mail = Mail.new(from, subject, to, content)
 
-		sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
-		response = sg.client.mail._('send').post(request_body: mail)
-		puts response.status_code
-		puts response.body
-		puts response.parsed_body
-		puts response.headers
+		SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY']).client.mail._('send').post(request_body: mail)
 
-		# if response.status_code === 200
-		# 	NotificationSenderMailer.send_notification(params).deliver
-		# end
+		# puts response.status_code
+		# puts response.body
+		# puts response.parsed_body
+		# puts response.headers
 
 	end
 end

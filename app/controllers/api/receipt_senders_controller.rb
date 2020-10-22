@@ -1,13 +1,9 @@
 class Api::ReceiptSendersController < ApplicationController
 
 	def create
-		ReceiptSenderMailer.send_receipt(params)
+		ReceiptSenderMailer.send_receipt(params).deliver
 		if response.status === 200 || 201 || 202 || 203 || 204
-			NotificationSenderMailer.send_notification(params)
-		else
-			puts '******************************************************'
-			puts '**Neither receipt nor notification emails were sent!**'
-			puts '******************************************************'
+			NotificationSenderMailer.send_notification(params).deliver
 		end
 	end
 
