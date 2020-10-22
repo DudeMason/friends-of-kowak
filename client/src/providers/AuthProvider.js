@@ -8,9 +8,10 @@ export default class AuthProvider extends Component {
 	state = {user: {email: null, password: null, nickname: null}, edit: false};
 
 	handleRegister = (user, history) => {
-		axios.get('/api/users')
-		.then(res => {
-			if (res.data.length <= 1) {
+		// // If you desire a user capacity, use this
+		// axios.get('/api/users')
+		// .then(res => {
+		// 	if (res.data.length <= 1) {
 				axios.post('/api/auth', user)
 				.then(result => {
 					this.setState({user: result.data.data}, () => {
@@ -21,13 +22,13 @@ export default class AuthProvider extends Component {
 				.catch(err => {
 					console.log(err);
 				});
-			} else {
-				alert('Already at max users.');
-			}
-		})
-		.catch(err => {
-			console.log(err);
-		});
+		// 	} else {
+		// 		alert('Already at max users.');
+		// 	}
+		// })
+		// .catch(err => {
+		// 	console.log(err);
+		// });
 	}
 
 	handleLogin = (user, history) => {
