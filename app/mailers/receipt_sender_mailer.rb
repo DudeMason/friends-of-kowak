@@ -25,7 +25,7 @@ class ReceiptSenderMailer < ApplicationMailer
       'content': [
         {
           'type': 'text/html',
-          'value': '#{I18n.t('payment_submitted')}'
+          'value': #{I18n.t('payment_submitted', params: params[:first_name], params2: params[:last_name], params3: params[:phone1], params4: params[:phone2], params5: params[:phone3], var: Date.parse(params[:date]).strftime("%m/%d/%Y"), params6: params[:time], params7: params[:company], params8: params[:message])}
         }
       ],
 			'mail_settings': {
