@@ -143,6 +143,9 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    ruby_http_client (3.5.1)
+    sendgrid-ruby (6.3.6)
+      ruby_http_client (~> 3.4)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -177,6 +180,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
+  sendgrid-ruby (~> 6.3, >= 6.3.6)
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
