@@ -26,13 +26,20 @@ class Navbar extends React.Component {
 								<span role={'img'} aria-label={'Cancel'}>✘</span>
 							</button>
 									 :
-							<button onClick={() => toggleEdit()} className={'button isEdit edit'}>✎</button>
+							<>
+								{
+									user.nickname ?
+									<button onClick={() => toggleEdit()} className={'button isEdit edit'}>✎</button>
+																:
+									null
+								}
+							</>
 						}
 						<Link to={''} onClick={() => handleLogout(this.props.history)}>
 							<span className={'login navItem'}>Logout</span>
 						</Link>
 					</>
-							 :
+										 :
 					<Link to={'/login'}>
 						<span className={'login navItem'}>Login</span>
 					</Link>

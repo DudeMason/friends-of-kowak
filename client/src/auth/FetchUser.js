@@ -17,7 +17,7 @@ class FetchUser extends React.Component {
 					setUser(res.data.data);
 					this.loaded();
 				})
-				.catch(res => {
+				.catch(() => {
 					this.loaded();
 				})
 			} else {

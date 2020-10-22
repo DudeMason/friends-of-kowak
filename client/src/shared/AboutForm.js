@@ -4,12 +4,12 @@ import { PageConsumer } from "../providers/PageProvider";
 class AboutForm extends React.Component {
 
 	componentDidMount() {
-		this.props.value.showPage(2);
+		this.props.value.showPage(3);
 	}
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.props.value.editPage(2);
+		this.props.value.editPage(3);
 	}
 
 	render() {

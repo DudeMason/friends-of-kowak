@@ -4,12 +4,12 @@ import { PageConsumer } from "../providers/PageProvider";
 class ContactForm extends React.Component {
 
 	componentDidMount() {
-		this.props.value.showPage(3);
+		this.props.value.showPage(2);
 	}
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.props.value.editPage(3);
+		this.props.value.editPage(2);
 	}
 
 	render() {

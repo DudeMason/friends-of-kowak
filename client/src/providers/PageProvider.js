@@ -30,19 +30,27 @@ export default class PageProvider extends Component {
 		})
 	}
 
+	updatePage = (id) => {
+		axios.put(`/api/pages/${id}`, this.state.page)
+		.then(results => {
+			this.setState({page: results.data})
+		})
+		.catch(err => {
+			console.log(err)
+		})
+	}
+
 	editPage = (id) => {
 		axios.get('/api/auth/validate_token')
-		.then(() => {
-			axios.put(`/api/pages/${id}`, this.state.page)
-			.then(results => {
-				this.setState({page: results.data})
-			})
-			.catch(err => {
-				console.log(err)
-			})
+		.then(res => {
+			if (res.data.data.nickname) {
+				this.updatePage(id);
+			} else {
+				alert('You are not authorized to edit pages.');
+			}
 		})
 		.catch(() => {
-			alert("Must be a user to edit!")
+			alert('Must be a authorized user to edit!');
 		})
 	}
 

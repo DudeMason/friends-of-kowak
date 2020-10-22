@@ -7,7 +7,8 @@ class HomeForm extends React.Component {
 		this.props.value.showPage(1);
 	}
 
-	handleSubmit = () => {
+	handleSubmit = (e) => {
+		e.preventDefault();
 		this.props.value.editPage(1);
 	}
 
