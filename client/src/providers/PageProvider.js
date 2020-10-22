@@ -53,6 +53,16 @@ export default class PageProvider extends Component {
 		});
 	}
 
+	sendReceipt = (receiptParams) => {
+		axios.post('/api/receipt_senders', receiptParams)
+		.then(res => {
+			return res.data
+		})
+		.catch(err => {
+			console.log(err)
+		})
+	}
+
 	handleChange = (e) => {
 		const {name, value} = e.target;
 		this.setState({page: {...this.state.page, [name]: value}});

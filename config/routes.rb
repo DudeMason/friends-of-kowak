@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :users
     resources :pages
+    resources :receipt_senders, only: [:create]
   end
 
   get '*other', to: 'static#index'
