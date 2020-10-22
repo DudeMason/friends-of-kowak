@@ -4,8 +4,8 @@ import axios from 'axios';
 const AuthContext = React.createContext(undefined);
 export const AuthConsumer = AuthContext.Consumer;
 
-class AuthProvider extends Component {
-	state = {user: {email: null, password: null, nickname: null}, edit: false}
+export default class AuthProvider extends Component {
+	state = {user: {email: null, password: null, nickname: null}, edit: false};
 
 	handleRegister = (user, history) => {
 		axios.get('/api/users')
@@ -22,7 +22,7 @@ class AuthProvider extends Component {
 					console.log(err);
 				});
 			} else {
-				alert("Already at max users.")
+				alert('Already at max users.');
 			}
 		})
 		.catch(err => {
@@ -38,7 +38,7 @@ class AuthProvider extends Component {
 			});
 		})
 		.catch(err => {
-			alert('Incorrect login')
+			alert('Incorrect login');
 			console.log(err);
 		});
 	}
@@ -55,7 +55,7 @@ class AuthProvider extends Component {
 	}
 
 	toggleEdit = () => {
-		this.setState({edit: !this.state.edit})
+		this.setState({edit: !this.state.edit});
 	}
 
 	render() {
@@ -71,8 +71,6 @@ class AuthProvider extends Component {
 			}}>
 				{this.props.children}
 			</AuthContext.Provider>
-		)
+		);
 	}
 }
-
-export default AuthProvider;

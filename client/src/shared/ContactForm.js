@@ -17,7 +17,6 @@ class ContactForm extends React.Component {
 		const {page, handleChange} = this.props.value
 
 		return (
-
 			<div>
 				<form onSubmit={this.handleSubmit}>
 					<textarea name={'text1'} value={page.text1 ?? ""} onChange={handleChange}/>
@@ -35,16 +34,13 @@ class ContactForm extends React.Component {
 					</button>
 				</form>
 			</div>
-		)
+		);
 	}
 }
 
-export default class ConnectedContactForm extends React.Component {
-	render() {
-		return (
-			<PageConsumer>
-				{value => <ContactForm value={value}/>}
-			</PageConsumer>
-		)
-	}
-}
+const ConnectedContactForm = () => (
+	<PageConsumer>
+		{value => <ContactForm value={value}/>}
+	</PageConsumer>
+);
+export default ConnectedContactForm;

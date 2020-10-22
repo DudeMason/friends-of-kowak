@@ -5,8 +5,7 @@ const PageContext = React.createContext(undefined);
 export const PageConsumer = PageContext.Consumer;
 
 export default class PageProvider extends Component {
-
-	state = {page: {}}
+	state = {page: {}};
 
 	showPage = (id) => {
 		axios.get(`/api/pages/${id}`)
@@ -27,7 +26,7 @@ export default class PageProvider extends Component {
 		})
 		.catch(err => {
 			console.log(err)
-		})
+		});
 	}
 
 	updatePage = (id) => {
@@ -36,8 +35,8 @@ export default class PageProvider extends Component {
 			this.setState({page: results.data})
 		})
 		.catch(err => {
-			console.log(err)
-		})
+			console.log(err);
+		});
 	}
 
 	editPage = (id) => {
@@ -51,12 +50,12 @@ export default class PageProvider extends Component {
 		})
 		.catch(() => {
 			alert('Must be a authorized user to edit!');
-		})
+		});
 	}
 
 	handleChange = (e) => {
-		const {name, value} = e.target
-		this.setState({page: {...this.state.page, [name]: value}})
+		const {name, value} = e.target;
+		this.setState({page: {...this.state.page, [name]: value}});
 	}
 
 	render() {
@@ -69,6 +68,6 @@ export default class PageProvider extends Component {
 			}}>
 				{this.props.children}
 			</PageContext.Provider>
-		)
+		);
 	}
 }

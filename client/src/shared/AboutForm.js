@@ -17,7 +17,6 @@ class AboutForm extends React.Component {
 		const {page, handleChange} = this.props.value
 
 		return (
-
 			<div>
 				<form onSubmit={this.handleSubmit}>
 					<textarea name={'text1'} value={page.text1 ?? ""} onChange={handleChange}/>
@@ -35,17 +34,14 @@ class AboutForm extends React.Component {
 					</button>
 				</form>
 			</div>
-		)
+		);
 	}
 }
 
-export default class ConnectedAboutForm extends React.Component {
-	render() {
-		return (
-			<PageConsumer>
-				{value => <AboutForm value={value}/>}
-			</PageConsumer>
-		)
-	}
-}
+const ConnectedAboutForm = () => (
+	<PageConsumer>
+		{value => <AboutForm value={value}/>}
+	</PageConsumer>
+);
+export default ConnectedAboutForm;
 

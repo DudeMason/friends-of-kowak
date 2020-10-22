@@ -9,10 +9,9 @@ class Contact extends React.Component {
 
 	render() {
 
-		const {page} = this.props.value
+		const {page} = this.props.value;
 
 		return (
-
 			<div>
 				{page.text1}
 				<br/>
@@ -25,17 +24,14 @@ class Contact extends React.Component {
 				{page.text5}
 				<br/>
 			</div>
-		)
+		);
 	}
 }
 
-export default class ConnectedContact extends React.Component {
-	render() {
-		return (
-			<PageConsumer>
-				{value => <Contact {...this.props} value={value}/>}
-			</PageConsumer>
-		)
-	}
-}
+const ConnectedContact = () => (
+	<PageConsumer>
+		{value => <Contact value={value}/>}
+	</PageConsumer>
+);
+export default ConnectedContact;
 

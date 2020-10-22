@@ -45,20 +45,13 @@ class Navbar extends React.Component {
 					</Link>
 				}
 			</div>
-		)
+		);
 	}
 }
 
-export class ConnectedNavbar extends React.Component {
-	render() {
-		return (
-			<AuthConsumer>
-				{auth =>
-					<Navbar {...this.props} auth={auth}/>
-				}
-			</AuthConsumer>
-		)
-	}
-}
-
+const ConnectedNavbar = (props) => (
+	<AuthConsumer>
+		{auth => <Navbar history={props.history} auth={auth}/>}
+	</AuthConsumer>
+);
 export default withRouter(ConnectedNavbar);

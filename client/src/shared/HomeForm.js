@@ -17,7 +17,6 @@ class HomeForm extends React.Component {
 		const {page, handleChange} = this.props.value
 
 		return (
-
 			<div>
 				<form onSubmit={this.handleSubmit}>
 					<textarea name={'text1'} value={page.text1 ?? ""} onChange={handleChange}/>
@@ -35,16 +34,13 @@ class HomeForm extends React.Component {
 					</button>
 				</form>
 			</div>
-		)
+		);
 	}
 }
 
-export default class ConnectedHomeForm extends React.Component {
-	render() {
-		return (
-			<PageConsumer>
-				{value => <HomeForm value={value}/>}
-			</PageConsumer>
-		)
-	}
-}
+const ConnectedHomeForm = () => (
+	<PageConsumer>
+		{value => <HomeForm value={value}/>}
+	</PageConsumer>
+);
+export default ConnectedHomeForm;

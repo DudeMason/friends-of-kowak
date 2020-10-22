@@ -3,6 +3,7 @@ import { Route, Redirect, } from "react-router-dom";
 import { AuthConsumer, } from "../providers/AuthProvider";
 
 const ProtectedRoute = ({component: Component, ...rest}) => (
+
 	<AuthConsumer>
 		{auth =>
 			<Route
@@ -21,6 +22,6 @@ const ProtectedRoute = ({component: Component, ...rest}) => (
 			/>
 		}
 	</AuthConsumer>
-)
+);
 
 export default ProtectedRoute;

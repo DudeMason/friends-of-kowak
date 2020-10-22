@@ -12,7 +12,7 @@ class Register extends React.Component {
 		if (password === passwordConfirmation)
 			handleRegister({email, password, passwordConfirmation}, history);
 		else
-			alert('Passwords Do Not Match!')
+			alert('Passwords Do Not Match!');
 	}
 
 	handleChange = (e) => {
@@ -21,49 +21,46 @@ class Register extends React.Component {
 	}
 
 	render() {
-		const {email, password, passwordConfirmation,} = this.state;
+		const {email, password, passwordConfirmation} = this.state;
 
 		return (
 			<div align='center'>
 				<h1>Register</h1>
 				<form onSubmit={this.handleSubmit}>
-						<input
-							required
-							autoFocus
-							name='email'
-							value={email}
-							placeholder='Email'
-							onChange={this.handleChange}
-						/>
-						<input
-							required
-							name='password'
-							value={password}
-							placeholder='Password'
-							type='password'
-							onChange={this.handleChange}
-						/>
-						<input
-							required
-							name='passwordConfirmation'
-							value={passwordConfirmation}
-							placeholder='Confirmation'
-							type='password'
-							onChange={this.handleChange}
-						/>
-						<button type='submit'>Submit</button>
-					</form>
+					<input
+						required
+						autoFocus
+						name='email'
+						value={email}
+						placeholder='Email'
+						onChange={this.handleChange}
+					/>
+					<input
+						required
+						name='password'
+						value={password}
+						placeholder='Password'
+						type='password'
+						onChange={this.handleChange}
+					/>
+					<input
+						required
+						name='passwordConfirmation'
+						value={passwordConfirmation}
+						placeholder='Confirmation'
+						type='password'
+						onChange={this.handleChange}
+					/>
+					<button type='submit'>Submit</button>
+				</form>
 			</div>
-		)
+		);
 	}
 }
 
-export default class ConnectedRegister extends React.Component {
-	render() {
-		return (
-			<AuthConsumer>
-				{auth => <Register history={this.props.history} auth={auth}/>}
-			</AuthConsumer>
-		)
-	}
-}
+const ConnectedRegister = (props) => (
+	<AuthConsumer>
+		{auth => <Register history={props.history} auth={auth}/>}
+	</AuthConsumer>
+);
+export default ConnectedRegister;

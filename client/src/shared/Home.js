@@ -9,10 +9,9 @@ class Home extends React.Component {
 
 	render() {
 
-		const {page} = this.props.value
+		const {page} = this.props.value;
 
 		return (
-
 			<div>
 				{page.text1}
 				<br/>
@@ -25,16 +24,13 @@ class Home extends React.Component {
 				{page.text5}
 				<br/>
 			</div>
-		)
+		);
 	}
 }
 
-export default class ConnectedHome extends React.Component {
-	render() {
-		return (
-			<PageConsumer>
-				{value => <Home {...this.props} value={value}/>}
-			</PageConsumer>
-		)
-	}
-}
+const ConnectedHome = () => (
+	<PageConsumer>
+		{value => <Home value={value}/>}
+	</PageConsumer>
+);
+export default ConnectedHome
