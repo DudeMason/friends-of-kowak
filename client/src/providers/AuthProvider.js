@@ -33,9 +33,8 @@ export default class AuthProvider extends Component {
 	handleLogin = (user, history) => {
 		axios.post('/api/auth/sign_in', user)
 		.then(res => {
-			this.setState({user: res.data.data}, () => {
-				history.push('/');
-			});
+			this.setState({user: res.data.data});
+			history.push('/');
 		})
 		.catch(() => {
 			axios.get('/api/users')
