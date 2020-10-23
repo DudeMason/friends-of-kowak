@@ -12,16 +12,15 @@ export default class AuthProvider extends Component {
 		// axios.get('/api/users')
 		// .then(res => {
 		// 	if (res.data.length <= 1) {
-				axios.post('/api/auth', user)
-				.then(result => {
-					this.setState({user: result.data.data}, () => {
-						history.push('/');
-					});
-					this.componentDidMount();
-				})
-				.catch(err => {
-					console.log(err);
-				});
+		axios.post('/api/auth', user)
+		.then(result => {
+			this.setState({user: result.data.data});
+			history.push('/');
+		})
+		.catch(err => {
+			console.log(err);
+			alert('User already exists.');
+		});
 		// 	} else {
 		// 		alert('Already at max users.');
 		// 	}
@@ -39,8 +38,8 @@ export default class AuthProvider extends Component {
 			});
 		})
 		.catch(err => {
-			alert('Incorrect login');
 			console.log(err);
+			alert('Incorrect login');
 		});
 	}
 
