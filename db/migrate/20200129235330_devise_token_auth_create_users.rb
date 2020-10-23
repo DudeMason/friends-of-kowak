@@ -1,4 +1,7 @@
 class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
+
+  #@todo: my portfolio has the proper way to add trackable to users
+
   def change
     
     create_table(:users) do |t|
