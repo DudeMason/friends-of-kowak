@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NoMatch = () => (
 
-  <div align={'center'}>
+  <div align='center'>
     <br/>
     404 Error: Page not found!
     <br/>
