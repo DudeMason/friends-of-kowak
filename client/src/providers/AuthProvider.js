@@ -8,7 +8,7 @@ export default class AuthProvider extends Component {
 	state = {user: null, edit: false};
 
 	handleRegister = (user, history) => {
-		// // If you desire a user capacity, use this
+		// // If you desire a user limit, use this
 		// axios.get('/api/users')
 		// .then(res => {
 		// 	if (res.data.length <= 1) {
@@ -37,9 +37,15 @@ export default class AuthProvider extends Component {
 				history.push('/');
 			});
 		})
-		.catch(err => {
-			console.log(err);
-			alert('Incorrect login');
+		.catch(() => {
+			axios.get('/api/users')
+			.then(res => {
+				if (res.data.find(u => user.email === u.email)) {
+					alert('Incorrect password.');
+				} else {
+					alert('Username does not exist.');
+				}
+			});
 		});
 	}
 
