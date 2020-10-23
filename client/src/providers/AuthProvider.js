@@ -5,7 +5,7 @@ const AuthContext = React.createContext(undefined);
 export const AuthConsumer = AuthContext.Consumer;
 
 export default class AuthProvider extends Component {
-	state = {user: {email: null, password: null, nickname: null}, edit: false};
+	state = {user: null, edit: false};
 
 	handleRegister = (user, history) => {
 		// // If you desire a user capacity, use this
@@ -47,7 +47,7 @@ export default class AuthProvider extends Component {
 	handleLogout = (history) => {
 		axios.delete('/api/auth/sign_out')
 		.then(() => {
-			this.setState({user: {email: null, password: null}, edit: false});
+			this.setState({user: null, edit: false});
 			history.push('/login');
 		})
 		.catch(err => {
@@ -67,8 +67,7 @@ export default class AuthProvider extends Component {
 				handleRegister: this.handleRegister,
 				handleLogin: this.handleLogin,
 				handleLogout: this.handleLogout,
-				authenticated: this.state.user.email !== null,
-				setUser: (user) => this.setState({user: {email: user.email, password: user.password, nickname: user.nickname}})
+				setUser: (user) => this.setState({user: user})
 			}}>
 				{this.props.children}
 			</AuthContext.Provider>

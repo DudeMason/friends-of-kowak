@@ -5,19 +5,15 @@ import { AuthConsumer, } from "../providers/AuthProvider";
 const ProtectedRoute = ({component: Component, ...rest}) => (
 
 	<AuthConsumer>
-		{auth =>
+		{
+			auth =>
 			<Route
 				{...rest}
 				render={props => (
-					auth.authenticated ?
-						<Component {...props} />
-						:
-						<Redirect
-							to={{
-								pathname: "/login",
-								state: {from: props.location,},
-							}}
-						/>
+					auth.user ?
+					<Component {...props} />
+														 :
+					<Redirect to={{pathname: "/login", state: {from: props.location}}}/>
 				)}
 			/>
 		}

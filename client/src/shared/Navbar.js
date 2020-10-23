@@ -18,7 +18,7 @@ class Navbar extends React.Component {
 					<span className={'navItem'}>About</span>
 				</Link>
 				{
-					user.email ?
+					user ?
 					<>
 						{
 							edit ?
