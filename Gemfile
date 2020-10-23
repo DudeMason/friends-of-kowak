@@ -7,6 +7,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'devise_token_auth', '~> 1.1', '>= 1.1.4'
+gem 'shopify_api', '~> 9.2'
 gem 'sendgrid-ruby', '~> 6.3', '>= 6.3.6'
 gem 'bootsnap', '>= 1.4.2', require: false
 
