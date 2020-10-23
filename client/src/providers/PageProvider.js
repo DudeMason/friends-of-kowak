@@ -25,14 +25,14 @@ export default class PageProvider extends Component {
 			})
 		})
 		.catch(err => {
-			console.log(err)
+			console.log(err);
 		});
 	}
 
 	updatePage = (id) => {
 		axios.put(`/api/pages/${id}`, this.state.page)
 		.then(results => {
-			this.setState({page: results.data})
+			this.setState({page: results.data});
 		})
 		.catch(err => {
 			console.log(err);
@@ -56,10 +56,10 @@ export default class PageProvider extends Component {
 	sendReceipt = (receiptParams) => {
 		axios.post('/api/receipt_senders', receiptParams)
 		.then(res => {
-			return res.data
+			return res.data;
 		})
 		.catch(err => {
-			console.log(err)
+			console.log(err);
 		})
 	}
 

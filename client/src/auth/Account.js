@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthConsumer, } from "../providers/AuthProvider";
+import { AuthConsumer } from "../providers/AuthProvider";
 import axios from "axios";
 
 class Account extends React.Component {

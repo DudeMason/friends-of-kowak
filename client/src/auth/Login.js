@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthConsumer, } from "../providers/AuthProvider";
+import { AuthConsumer } from "../providers/AuthProvider";
 
 class Login extends React.Component {
 	state = {email: '', password: ''};

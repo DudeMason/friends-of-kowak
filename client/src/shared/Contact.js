@@ -8,7 +8,6 @@ class Contact extends React.Component {
 	}
 
 	render() {
-
 		const {page} = this.props.value;
 
 		return (

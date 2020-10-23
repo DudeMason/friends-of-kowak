@@ -13,8 +13,7 @@ class ContactForm extends React.Component {
 	}
 
 	render() {
-
-		const {page, handleChange} = this.props.value
+		const {page, handleChange} = this.props.value;
 
 		return (
 			<div>

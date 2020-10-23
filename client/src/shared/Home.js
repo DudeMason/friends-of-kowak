@@ -8,7 +8,6 @@ class Home extends React.Component {
 	}
 
 	render() {
-
 		const {page} = this.props.value;
 
 		return (
