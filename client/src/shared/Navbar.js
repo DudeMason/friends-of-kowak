@@ -10,29 +10,11 @@ class Navbar extends React.Component {
 			<div>
 				<div className='title'>
 					Friends of Kowak
-					<button className='donateButton' onClick={() => alert('This feature is not yet available.')}>
-						Donate
-					</button>
 				</div>
 
 				<div className={'navbar'}>
-					<Link to={'/'}>
-						<span className='navItem'>Home</span>
-					</Link>
-					<Link to={'/education'}>
-						<span className='navItem'>Education</span>
-					</Link>
-					<Link to={'/health'}>
-						<span className='navItem'>Health Care</span>
-					</Link>
-					<Link to={'/community'}>
-						<span className='navItem'>Community</span>
-					</Link>
-					<Link to={'/about'}>
-						<span className='navItem'>About Us</span>
-					</Link>
-					<Link to={'/contact'}>
-						<span className='navItem'>Contact</span>
+					<Link to={'/donate'} className='donateButton navItem'>
+						Donate
 					</Link>
 					{
 						user ?
@@ -52,15 +34,33 @@ class Navbar extends React.Component {
 									}
 								</>
 							}
-							<Link to={''} onClick={() => handleLogout(this.props.history)}>
-								<span className='login'>Logout</span>
+							<Link to={''} className='login navItem' onClick={() => handleLogout(this.props.history)}>
+								Logout
 							</Link>
 						</>
 								 :
-						<Link to={'/login'}>
-							<span className='login'>Login</span>
+						<Link to={'/login'} className='login navItem'>
+							Login
 						</Link>
 					}
+					<Link to={'/'} className='navItem'>
+						Home
+					</Link>
+					<Link to={'/education'} className='navItem'>
+						Education
+					</Link>
+					<Link to={'/health'} className='navItem'>
+						Health Care
+					</Link>
+					<Link to={'/community'} className='navItem'>
+						Community
+					</Link>
+					<Link to={'/about'} className='navItem'>
+						About Us
+					</Link>
+					<Link to={'/contact'} className='navItem'>
+						Contact
+					</Link>
 				</div>
 			</div>
 		);

@@ -17,11 +17,12 @@
     padding: 1rem;
     display: inline-block;
     color: black;
+    border-radius: 6%;
+    text-decoration: none;
 }
-
 .navItem:focus {
-    outline: none 2rem;
-    box-shadow: 0 0 5px 3px #ffffff;
+    outline: none;
+    box-shadow: 0 0 7px 2px royalblue;
 }
 
 .formButton {
@@ -58,14 +59,9 @@
     color: white;
 }
 
-button:focus {
-    outline: none;
-    box-shadow: 0 0 7px 2px #ffffff;
-}
-
 .login {
     position: fixed;
-    top: 1rem;
+    top: 0;
     right: 1rem;
     color: white;
 }

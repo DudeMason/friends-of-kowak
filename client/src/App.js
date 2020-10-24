@@ -19,6 +19,8 @@ import About from './shared/pages/About';
 import AboutForm from './shared/forms/AboutForm';
 import Contact from './shared/pages/Contact';
 import ContactForm from './shared/forms/ContactForm';
+import Donate from "./shared/pages/Donate";
+import DonateForm from "./shared/forms/DonateForm";
 import NoMatch from './shared/NoMatch';
 import Navbar from './shared/Navbar';
 import './App.css';
@@ -38,6 +40,7 @@ const App = ({edit}) => (
 						<Route exact path={'/community'} component={CommunityForm}/>
 						<Route exact path={'/about'} component={AboutForm}/>
 						<Route exact path={'/contact'} component={ContactForm}/>
+						<Route exact path={'/donate'} component={DonateForm}/>
 						<RedirectRoute exact path={'/login'} component={Login}/>
 						<RedirectRoute exact path={'/register'} component={Register}/>
 						<ProtectedRoute exact path={'/account'} component={Account}/>
@@ -56,6 +59,7 @@ const App = ({edit}) => (
 						<Route exact path={'/community'} component={Community}/>
 						<Route exact path={'/about'} component={About}/>
 						<Route exact path={'/contact'} component={Contact}/>
+						<Route exact path={'/donate'} component={Donate}/>
 						<RedirectRoute exact path={'/login'} component={Login}/>
 						<RedirectRoute exact path={'/register'} component={Register}/>
 						<ProtectedRoute exact path={'/account'} component={Account}/>

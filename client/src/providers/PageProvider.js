@@ -6,7 +6,15 @@ export const PageConsumer = PageContext.Consumer;
 
 export default class PageProvider extends Component {
 	state = {page: {}};
-	pageConstants = {"homePage": 1, "educationPage": 2, "healthPage": 3, "communityPage": 4, "aboutPage": 5, "contactPage": 6}
+	pageConstants = {
+		"homePage": 1,
+		"educationPage": 2,
+		"healthPage": 3,
+		"communityPage": 4,
+		"aboutPage": 5,
+		"contactPage": 6,
+		"donatePage": 7
+	}
 
 	showPage = (id) => {
 		axios.get(`/api/pages/${id}`)
