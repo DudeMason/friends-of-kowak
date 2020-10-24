@@ -6,6 +6,7 @@ export const PageConsumer = PageContext.Consumer;
 
 export default class PageProvider extends Component {
 	state = {page: {}};
+	pageConstants = {"homePage": 1, "educationPage": 2, "healthPage": 3, "communityPage": 4, "aboutPage": 5, "contactPage": 6}
 
 	showPage = (id) => {
 		axios.get(`/api/pages/${id}`)
@@ -31,8 +32,8 @@ export default class PageProvider extends Component {
 
 	updatePage = (id) => {
 		axios.put(`/api/pages/${id}`, this.state.page)
-		.then(results => {
-			this.setState({page: results.data});
+		.then(() => {
+			window.location.reload();
 		})
 		.catch(err => {
 			console.log(err);
@@ -75,6 +76,7 @@ export default class PageProvider extends Component {
 				editPage: this.editPage,
 				showPage: this.showPage,
 				handleChange: this.handleChange,
+				pageConstants: this.pageConstants,
 			}}>
 				{this.props.children}
 			</PageContext.Provider>

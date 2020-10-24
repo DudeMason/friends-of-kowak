@@ -1,10 +1,12 @@
 import React from 'react';
-import { PageConsumer } from "../providers/PageProvider";
+import { PageConsumer } from "../../providers/PageProvider";
 
-class Contact extends React.Component {
+class Home extends React.Component {
+
+	page = this.props.value.pageConstants.educationPage
 
 	componentDidMount() {
-		this.props.value.showPage(2);
+		this.props.value.showPage(this.page);
 	}
 
 	render() {
@@ -27,10 +29,9 @@ class Contact extends React.Component {
 	}
 }
 
-const ConnectedContact = () => (
+const ConnectedHome = () => (
 	<PageConsumer>
-		{value => <Contact value={value}/>}
+		{value => <Home value={value}/>}
 	</PageConsumer>
 );
-export default ConnectedContact;
-
+export default ConnectedHome

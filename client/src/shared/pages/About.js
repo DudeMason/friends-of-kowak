@@ -1,10 +1,12 @@
 import React from 'react';
-import { PageConsumer } from "../providers/PageProvider";
+import { PageConsumer } from "../../providers/PageProvider";
 
-class Home extends React.Component {
+class About extends React.Component {
+
+	page = this.props.value.pageConstants.aboutPage
 
 	componentDidMount() {
-		this.props.value.showPage(1);
+		this.props.value.showPage(this.page);
 	}
 
 	render() {
@@ -27,9 +29,9 @@ class Home extends React.Component {
 	}
 }
 
-const ConnectedHome = () => (
+const ConnectedAbout = () => (
 	<PageConsumer>
-		{value => <Home value={value}/>}
+		{value => <About value={value}/>}
 	</PageConsumer>
 );
-export default ConnectedHome
+export default ConnectedAbout;

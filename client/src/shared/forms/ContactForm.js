@@ -1,15 +1,17 @@
 import React from 'react';
-import { PageConsumer } from "../providers/PageProvider";
+import { PageConsumer } from "../../providers/PageProvider";
 
-class AboutForm extends React.Component {
+class ContactForm extends React.Component {
+
+	page = this.props.value.pageConstants.contactPage
 
 	componentDidMount() {
-		this.props.value.showPage(3);
+		this.props.value.showPage(this.page);
 	}
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.props.value.editPage(3);
+		this.props.value.editPage(this.page);
 	}
 
 	render() {
@@ -28,7 +30,7 @@ class AboutForm extends React.Component {
 					<br/>
 					<textarea name='text5' value={page.text5 ?? ""} onChange={handleChange}/>
 					<br/>
-					<button type='submit' className='button isSubmit'>
+					<button type='submit' className='formButton isConfirm navItem'>
 						<span role='img' aria-label='Submit'>✔︎</span>
 					</button>
 				</form>
@@ -37,10 +39,9 @@ class AboutForm extends React.Component {
 	}
 }
 
-const ConnectedAboutForm = () => (
+const ConnectedContactForm = () => (
 	<PageConsumer>
-		{value => <AboutForm value={value}/>}
+		{value => <ContactForm value={value}/>}
 	</PageConsumer>
 );
-export default ConnectedAboutForm;
-
+export default ConnectedContactForm;
