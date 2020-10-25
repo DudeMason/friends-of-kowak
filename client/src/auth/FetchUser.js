@@ -6,7 +6,7 @@ class FetchUser extends React.Component {
 	state = {loaded: false};
 
 	componentDidMount() {
-		const {user, setUser} = this.props.value;
+		const {user, setUser} = this.props;
 
 		if (user) {
 			this.loaded();
@@ -39,7 +39,7 @@ class FetchUser extends React.Component {
 
 const ConnectedFetchUser = (props) => (
 	<Consumer>
-		{value => <FetchUser {...props} value={value}/>}
+		{value => <FetchUser {...props} value={value} user={value.user} setUser={value.setUser}/>}
 	</Consumer>
 );
 export default ConnectedFetchUser;

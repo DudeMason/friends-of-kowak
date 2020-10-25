@@ -5,7 +5,9 @@ import { Consumer } from "../Provider";
 class Navbar extends React.Component {
 
 	render() {
+
 		const {edit, user, logout, toggleEdit, editPage} = this.props;
+
 		return (
 			<div>
 				<div className='title'>
@@ -18,31 +20,27 @@ class Navbar extends React.Component {
 					</Link>
 					{
 						user ?
-						<>
-							{
-								edit ?
-								<>
-									<button className='formButton isConfirm navItem' onClick={editPage}>
-										<span role='img' aria-label='Submit'>✔︎</span>
-									</button>
-									<button className='formButton isCancel navItem' onClick={toggleEdit}>
-										<span role='img' aria-label='Cancel'>✘</span>
-									</button>
-								</>
-										 :
-								<>
-									{
-										user.nickname ?
-										<button className='formButton isEdit navItem' onClick={toggleEdit}>✎</button>
-																	:
-										null
-									}
-								</>
-							}
+						<div>
 							<Link to={''} className='login navItem' onClick={() => logout(this.props.history)}>
 								Logout
 							</Link>
-						</>
+
+							{
+								edit ?
+								<div>
+									<button className='formButton isCancel navItem' onClick={toggleEdit}>
+										<span role='img' aria-label='Cancel'>✘</span>
+									</button>
+									<button className='formButton isConfirm navItem' onClick={editPage}>
+										<span role='img' aria-label='Submit'>✔︎</span>
+									</button>
+								</div>
+										 :
+								<div>
+									{user.nickname ? <button className='formButton isEdit navItem' onClick={toggleEdit}>✎</button> : null}
+								</div>
+							}
+						</div>
 								 :
 						<Link to={'/login'} className='login navItem'>
 							Login

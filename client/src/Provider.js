@@ -7,7 +7,7 @@ export const Consumer = Context.Consumer;
 export default class Provider extends Component {
 	state = {user: null, edit: false, page: {}};
 
-	text1; text3; text2;text4; text5; text6; text7; text8; text9;
+	text1; text3; text2;text4; text5; text6; text7; text8; text9; nickname;
 
 	pageConstants = {
 		"homeId": 1,

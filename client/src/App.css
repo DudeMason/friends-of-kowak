@@ -22,7 +22,11 @@
 }
 .navItem:focus {
     outline: none;
-    box-shadow: 0 0 7px 2px royalblue;
+    box-shadow: 0 2px 4px 1px dimgrey;
+}
+.navItem:hover {
+    opacity: .6;
+    transition: opacity .10s ease-in;
 }
 
 .formButton {
