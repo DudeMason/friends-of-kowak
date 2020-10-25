@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthConsumer } from "./providers/AuthProvider";
+import { Consumer } from "./Provider";
 import { Route, Switch } from 'react-router-dom';
 import Account from "./auth/Account";
 import Login from './auth/Login';
@@ -72,8 +72,8 @@ const App = ({edit}) => (
 );
 
 const ConnectedApp = () => (
-	<AuthConsumer>
-		{value => <App canRegister={value.canRegister} edit={value.edit}/>}
-	</AuthConsumer>
+	<Consumer>
+		{value => <App edit={value.edit}/>}
+	</Consumer>
 );
 export default ConnectedApp;

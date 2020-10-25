@@ -1,16 +1,16 @@
 import React from 'react';
-import { PageConsumer } from "../../providers/PageProvider";
+import { Consumer } from "../../Provider";
 
 class Home extends React.Component {
 
-	page = this.props.value.pageConstants.communityPage
+	pageId = this.props.communityId;
 
 	componentDidMount() {
-		this.props.value.showPage(this.page);
+		this.props.showPage(this.pageId);
 	}
 
 	render() {
-		const {page} = this.props.value;
+		const {page} = this.props;
 
 		return (
 			<div>
@@ -24,14 +24,21 @@ class Home extends React.Component {
 				<br/>
 				{page.text5}
 				<br/>
+				{page.text6}
+				<br/>
+				{page.text7}
+				<br/>
+				{page.text8}
+				<br/>
+				{page.text9}
 			</div>
 		);
 	}
 }
 
 const ConnectedHome = () => (
-	<PageConsumer>
-		{value => <Home value={value}/>}
-	</PageConsumer>
+	<Consumer>
+		{value => <Home communityId={value.pageConstants.communityId} showPage={value.showPage} page={value.page}/>}
+	</Consumer>
 );
 export default ConnectedHome

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthConsumer } from "../providers/AuthProvider";
+import { Consumer } from "../Provider";
 import axios from "axios";
 
 class Account extends React.Component {
@@ -27,8 +27,8 @@ class Account extends React.Component {
 }
 
 const ConnectedAccount = () => (
-	<AuthConsumer>
+	<Consumer>
 		{auth => <Account auth={auth}/>}
-	</AuthConsumer>
+	</Consumer>
 );
 export default ConnectedAccount;

@@ -1,16 +1,16 @@
 import React from 'react';
-import { PageConsumer } from "../../providers/PageProvider";
+import { Consumer } from "../../Provider";
 
 class Contact extends React.Component {
 
-	page = this.props.value.pageConstants.contactPage
+	pageId = this.props.contactId;
 
 	componentDidMount() {
-		this.props.value.showPage(this.page);
+		this.props.showPage(this.pageId);
 	}
 
 	render() {
-		const {page} = this.props.value;
+		const {page} = this.props;
 
 		return (
 			<div>
@@ -24,15 +24,22 @@ class Contact extends React.Component {
 				<br/>
 				{page.text5}
 				<br/>
+				{page.text6}
+				<br/>
+				{page.text7}
+				<br/>
+				{page.text8}
+				<br/>
+				{page.text9}
 			</div>
 		);
 	}
 }
 
 const ConnectedContact = () => (
-	<PageConsumer>
-		{value => <Contact value={value}/>}
-	</PageConsumer>
+	<Consumer>
+		{value => <Contact contactId={value.pageConstants.contactId} showPage={value.showPage} page={value.page}/>}
+	</Consumer>
 );
 export default ConnectedContact;
 

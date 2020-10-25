@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthConsumer } from "../providers/AuthProvider";
+import { Consumer } from "../Provider";
 
 class Register extends React.Component {
 	state = {email: '', password: '', passwordConfirmation: ''};
@@ -69,8 +69,8 @@ class Register extends React.Component {
 }
 
 const ConnectedRegister = (props) => (
-	<AuthConsumer>
+	<Consumer>
 		{auth => <Register history={props.history} auth={auth}/>}
-	</AuthConsumer>
+	</Consumer>
 );
 export default ConnectedRegister;

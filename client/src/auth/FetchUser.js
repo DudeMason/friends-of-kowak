@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import { AuthConsumer } from "../providers/AuthProvider";
+import { Consumer } from "../Provider";
 
 class FetchUser extends React.Component {
 	state = {loaded: false};
 
 	componentDidMount() {
-		const {user, setUser} = this.props.auth;
+		const {user, setUser} = this.props.value;
 
 		if (user) {
 			this.loaded();
@@ -38,8 +38,8 @@ class FetchUser extends React.Component {
 }
 
 const ConnectedFetchUser = (props) => (
-	<AuthConsumer>
-		{auth => <FetchUser {...props} auth={auth}/>}
-	</AuthConsumer>
+	<Consumer>
+		{value => <FetchUser {...props} value={value}/>}
+	</Consumer>
 );
 export default ConnectedFetchUser;

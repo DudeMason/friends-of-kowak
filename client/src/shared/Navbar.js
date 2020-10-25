@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { AuthConsumer } from "../providers/AuthProvider";
+import { Consumer } from "../Provider";
 
 class Navbar extends React.Component {
 
 	render() {
-		const {user, handleLogout, toggleEdit, edit} = this.props.auth;
+		const {edit, user, logout, toggleEdit, editPage} = this.props;
 		return (
 			<div>
 				<div className='title'>
@@ -21,20 +21,25 @@ class Navbar extends React.Component {
 						<>
 							{
 								edit ?
-								<button onClick={toggleEdit} className='formButton isCancel navItem'>
-									<span role='img' aria-label='Cancel'>✘</span>
-								</button>
+								<>
+									<button className='formButton isConfirm navItem' onClick={editPage}>
+										<span role='img' aria-label='Submit'>✔︎</span>
+									</button>
+									<button className='formButton isCancel navItem' onClick={toggleEdit}>
+										<span role='img' aria-label='Cancel'>✘</span>
+									</button>
+								</>
 										 :
 								<>
 									{
 										user.nickname ?
-										<button onClick={toggleEdit} className='formButton isEdit navItem'>✎</button>
+										<button className='formButton isEdit navItem' onClick={toggleEdit}>✎</button>
 																	:
 										null
 									}
 								</>
 							}
-							<Link to={''} className='login navItem' onClick={() => handleLogout(this.props.history)}>
+							<Link to={''} className='login navItem' onClick={() => logout(this.props.history)}>
 								Logout
 							</Link>
 						</>
@@ -68,8 +73,9 @@ class Navbar extends React.Component {
 }
 
 const ConnectedNavbar = (props) => (
-	<AuthConsumer>
-		{auth => <Navbar history={props.history} auth={auth}/>}
-	</AuthConsumer>
+	<Consumer>
+		{value => <Navbar history={props.history} edit={value.edit} user={value.user} logout={value.handleLogout}
+											toggleEdit={value.toggleEdit} editPage={value.editPage}/>}
+	</Consumer>
 );
 export default withRouter(ConnectedNavbar);

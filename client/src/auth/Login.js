@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthConsumer } from "../providers/AuthProvider";
+import { Consumer } from "../Provider";
 
 class Login extends React.Component {
 	state = {email: '', password: ''};
@@ -49,8 +49,8 @@ class Login extends React.Component {
 }
 
 const ConnectedLogin = (props) => (
-	<AuthConsumer>
+	<Consumer>
 		{auth => <Login history={props.history} auth={auth}/>}
-	</AuthConsumer>
+	</Consumer>
 );
 export default ConnectedLogin;

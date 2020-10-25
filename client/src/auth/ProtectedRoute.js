@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { AuthConsumer } from "../providers/AuthProvider";
+import { Consumer } from "../Provider";
 
 const ProtectedRoute = ({component: Component, ...rest}) => (
 
-	<AuthConsumer>
+	<Consumer>
 		{
 			auth =>
 				<Route
@@ -17,7 +17,7 @@ const ProtectedRoute = ({component: Component, ...rest}) => (
 					)}
 				/>
 		}
-	</AuthConsumer>
+	</Consumer>
 );
 
 export default ProtectedRoute;
