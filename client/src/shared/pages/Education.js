@@ -10,62 +10,37 @@ class Education extends React.Component {
 	}
 
 	render() {
-		const {page, edit, handleChange} = this.props;
+		const {page: {text1, text2, text3, text4, text5, text6, text7, text8, text9}, handleChange, edit} = this.props;
 
 		return (
 			<div>
-				{
-					!edit ?
-					<>
-						<div>
-							{page.text1}
-							<br/>
-							{page.text2}
-						</div>
-						<div>
-							{page.text3}
-							<br/>
-							{page.text4}
-						</div>
-						<div>
-							{page.text5}
-							<br/>
-							{page.text6}
-						</div>
-						<br/>
-						<div>
-							{page.text7}
-						</div>
-						<br/>
-						<div>
-							{page.text8}
-						</div>
-						<br/>
-						<div>
-							{page.text9}
-						</div>
-					</>
-								:
-					<>
-						<textarea name='text1' value={page.text1 ?? ""} onChange={handleChange}/>
-						<br/>
-						<textarea name='text2' value={page.text2 ?? ""} onChange={handleChange}/>
-						<br/>
-						<textarea name='text3' value={page.text3 ?? ""} onChange={handleChange}/>
-						<br/>
-						<textarea name='text4' value={page.text4 ?? ""} onChange={handleChange}/>
-						<br/>
-						<textarea name='text5' value={page.text5 ?? ""} onChange={handleChange}/>
-						<br/>
-						<textarea name='text6' value={page.text6 ?? ""} onChange={handleChange}/>
-						<br/>
-						<textarea name='text7' value={page.text7 ?? ""} onChange={handleChange}/>
-						<br/>
-						<textarea name='text8' value={page.text8 ?? ""} onChange={handleChange}/>
-						<br/>
-						<textarea name='text9' value={page.text9 ?? ""} onChange={handleChange}/>
-					</>
-				}
+				<div>
+					{!edit ? <>{text1}</> : <textarea name='text1' value={text1 ?? ""} onChange={handleChange}/>}
+				</div>
+				<div>
+					{!edit ? <>{text2}</> : <textarea name='text2' value={text2 ?? ""} onChange={handleChange}/>}
+				</div>
+				<div>
+					{!edit ? <>{text3}</> : <textarea name='text3' value={text3 ?? ""} onChange={handleChange}/>}
+				</div>
+				<div>
+					{!edit ? <>{text4}</> : <textarea name='text4' value={text4 ?? ""} onChange={handleChange}/>}
+				</div>
+				<div>
+					{!edit ? <>{text5}</> : <textarea name='text5' value={text5 ?? ""} onChange={handleChange}/>}
+				</div>
+				<div>
+					{!edit ? <>{text6}</> : <textarea name='text6' value={text6 ?? ""} onChange={handleChange}/>}
+				</div>
+				<div>
+					{!edit ? <>{text7}</> : <textarea name='text7' value={text7 ?? ""} onChange={handleChange}/>}
+				</div>
+				<div>
+					{!edit ? <>{text8}</> : <textarea name='text8' value={text8 ?? ""} onChange={handleChange}/>}
+				</div>
+				<div>
+					{!edit ? <>{text9}</> : <textarea name='text9' value={text9 ?? ""} onChange={handleChange}/>}
+				</div>
 			</div>
 		);
 	}
