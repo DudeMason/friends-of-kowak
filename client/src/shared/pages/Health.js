@@ -1,7 +1,7 @@
 import React from 'react';
 import { Consumer } from "../../Provider";
 
-class Home extends React.Component {
+class Health extends React.Component {
 
 	pageId = this.props.healthId;
 
@@ -10,35 +10,71 @@ class Home extends React.Component {
 	}
 
 	render() {
-		const {page} = this.props;
+		const {page, handleChange, edit} = this.props;
 
 		return (
 			<div>
-				{page.text1}
-				<br/>
-				{page.text2}
-				<br/>
-				{page.text3}
-				<br/>
-				{page.text4}
-				<br/>
-				{page.text5}
-				<br/>
-				{page.text6}
-				<br/>
-				{page.text7}
-				<br/>
-				{page.text8}
-				<br/>
-				{page.text9}
+				{
+					!edit ?
+					<>
+						<div>
+							{page.text1}
+							<br/>
+							{page.text2}
+						</div>
+						<div>
+							{page.text3}
+							<br/>
+							{page.text4}
+						</div>
+						<div>
+							{page.text5}
+							<br/>
+							{page.text6}
+						</div>
+						<br/>
+						<div>
+							{page.text7}
+						</div>
+						<br/>
+						<div>
+							{page.text8}
+						</div>
+						<br/>
+						<div>
+							{page.text9}
+						</div>
+					</>
+								:
+					<>
+						<textarea name='text1' value={page.text1 ?? ""} onChange={handleChange}/>
+						<br/>
+						<textarea name='text2' value={page.text2 ?? ""} onChange={handleChange}/>
+						<br/>
+						<textarea name='text3' value={page.text3 ?? ""} onChange={handleChange}/>
+						<br/>
+						<textarea name='text4' value={page.text4 ?? ""} onChange={handleChange}/>
+						<br/>
+						<textarea name='text5' value={page.text5 ?? ""} onChange={handleChange}/>
+						<br/>
+						<textarea name='text6' value={page.text6 ?? ""} onChange={handleChange}/>
+						<br/>
+						<textarea name='text7' value={page.text7 ?? ""} onChange={handleChange}/>
+						<br/>
+						<textarea name='text8' value={page.text8 ?? ""} onChange={handleChange}/>
+						<br/>
+						<textarea name='text9' value={page.text9 ?? ""} onChange={handleChange}/>
+					</>
+				}
 			</div>
 		);
 	}
 }
 
-const ConnectedHome = () => (
+const ConnectedHealth = () => (
 	<Consumer>
-		{value => <Home healthId={value.pageConstants.healthId} showPage={value.showPage} page={value.page}/>}
+		{value => <Health healthId={value.pageConstants.healthId} showPage={value.showPage} page={value.page}
+										handleChange={value.handleChange} edit={value.edit}/>}
 	</Consumer>
 );
-export default ConnectedHome
+export default ConnectedHealth
