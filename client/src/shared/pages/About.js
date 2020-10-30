@@ -3,10 +3,10 @@ import { Consumer } from "../../Provider";
 
 class About extends React.Component {
 
-	pageId = this.props.aboutId;
-
 	componentDidMount() {
-		this.props.showPage(this.pageId);
+		const pageId = this.props.pageId;
+		document.getElementById(pageId).focus();
+		this.props.showPage(pageId);
 	}
 
 	componentWillUnmount() {
@@ -52,7 +52,7 @@ class About extends React.Component {
 
 const ConnectedAbout = () => (
 	<Consumer>
-		{value => <About aboutId={value.pageConstants.aboutId} showPage={value.showPage} page={value.page}
+		{value => <About pageId={value.pageConstants.aboutId} showPage={value.showPage} page={value.page}
 										 handleChange={value.handleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );

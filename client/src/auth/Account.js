@@ -7,20 +7,25 @@ class Account extends React.Component {
 	componentDidMount() {
 		axios.get('/api/auth/validate_token')
 		.catch(() => {
-			this.props.auth.setUser(null);
+			this.props.setUser(null);
 		});
+		this.props.showPage(this.props.pageId);
+	}
+
+	componentWillUnmount() {
+		this.props.clearPage();
 	}
 
 	render() {
-		const {user} = this.props.auth;
+		const {page: {text1, text2, text3}, user} = this.props;
 
 		return (
 			<div align='center'>
-				Account Page
+				{text1}
 				<br/>
-				Username: {user.uid}
+				{text2}: {user.uid}
 				<br/>
-				Email: {user.email}
+				{text3}: {user.email}
 			</div>
 		);
 	}
@@ -28,7 +33,8 @@ class Account extends React.Component {
 
 const ConnectedAccount = () => (
 	<Consumer>
-		{auth => <Account auth={auth}/>}
+		{value => <Account setUser={value.setUser} user={value.user} pageId={value.pageConstants.accountId}
+											 page={value.page} showPage={value.showPage} clearPage={value.clearPage}/>}
 	</Consumer>
 );
 export default ConnectedAccount;

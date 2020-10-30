@@ -3,10 +3,10 @@ import { Consumer } from "../../Provider";
 
 class Community extends React.Component {
 
-	pageId = this.props.communityId;
-
 	componentDidMount() {
-		this.props.showPage(this.pageId);
+		const pageId = this.props.pageId;
+		document.getElementById(pageId).focus();
+		this.props.showPage(pageId);
 	}
 
 	componentWillUnmount() {
@@ -52,7 +52,7 @@ class Community extends React.Component {
 
 const ConnectedCommunity = () => (
 	<Consumer>
-		{value => <Community communityId={value.pageConstants.communityId} showPage={value.showPage} page={value.page}
+		{value => <Community pageId={value.pageConstants.communityId} showPage={value.showPage} page={value.page}
 												 handleChange={value.handleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );

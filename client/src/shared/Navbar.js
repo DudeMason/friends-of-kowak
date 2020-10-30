@@ -14,8 +14,8 @@ class Navbar extends React.Component {
 					Friends of Kowak
 				</div>
 
-				<div className={'navbar'}>
-					<Link to={'/donate'} className='donateButton navItem'>
+				<div id={7} className={'navbar'}>
+					<Link to={'/donate'} className='navItem donateButton'>
 						Donate
 					</Link>
 					{
@@ -42,26 +42,26 @@ class Navbar extends React.Component {
 							}
 						</div>
 								 :
-						<Link to={'/login'} className='login navItem'>
+						<Link id={8} to={'/login'} className='login navItem'>
 							Login
 						</Link>
 					}
-					<Link to={'/'} className='navItem'>
+					<Link id={1} to={'/'} className='navItem'>
 						Home
 					</Link>
-					<Link to={'/education'} className='navItem'>
+					<Link id={2} to={'/education'} className='navItem'>
 						Education
 					</Link>
-					<Link to={'/health'} className='navItem'>
+					<Link id={3} to={'/health'} className='navItem'>
 						Health Care
 					</Link>
-					<Link to={'/community'} className='navItem'>
+					<Link id={4} to={'/community'} className='navItem'>
 						Community
 					</Link>
-					<Link to={'/about'} className='navItem'>
+					<Link id={5} to={'/about'} className='navItem'>
 						About Us
 					</Link>
-					<Link to={'/contact'} className='navItem'>
+					<Link id={6} to={'/contact'} className='navItem'>
 						Contact
 					</Link>
 				</div>

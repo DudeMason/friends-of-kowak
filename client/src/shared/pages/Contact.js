@@ -3,10 +3,10 @@ import { Consumer } from "../../Provider";
 
 class Contact extends React.Component {
 
-	pageId = this.props.contactId;
-
 	componentDidMount() {
-		this.props.showPage(this.pageId);
+		const pageId = this.props.pageId;
+		document.getElementById(pageId).focus();
+		this.props.showPage(pageId);
 	}
 
 	componentWillUnmount() {
@@ -52,7 +52,7 @@ class Contact extends React.Component {
 
 const ConnectedContact = () => (
 	<Consumer>
-		{value => <Contact contactId={value.pageConstants.contactId} showPage={value.showPage} page={value.page}
+		{value => <Contact pageId={value.pageConstants.contactId} showPage={value.showPage} page={value.page}
 											 handleChange={value.handleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );

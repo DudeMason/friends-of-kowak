@@ -1,13 +1,22 @@
 import React from 'react';
 import { Consumer } from "../Provider";
+import { Link } from "react-router-dom";
 
 class Register extends React.Component {
 	state = {email: '', password: '', passwordConfirmation: ''};
 
+	componentDidMount() {
+		this.props.showPage(this.props.pageId);
+	}
+
+	componentWillUnmount() {
+		this.props.clearPage();
+	}
+
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const {email, password, passwordConfirmation} = this.state;
-		const {auth: {handleRegister}, history,} = this.props;
+		const {handleRegister, history,} = this.props;
 
 		if (!/.@\w+\.[^0-9]{2}/i.test(email)){
 			alert('Must be an email address.');
@@ -32,10 +41,11 @@ class Register extends React.Component {
 
 	render() {
 		const {email, password, passwordConfirmation} = this.state;
+		const {page: {text1, text2, text3, text4}} = this.props;
 
 		return (
 			<div align='center'>
-				<h1>Register</h1>
+				<h1>{text1}</h1>
 				<form onSubmit={this.handleSubmit}>
 					<input
 						required
@@ -61,8 +71,12 @@ class Register extends React.Component {
 						type='password'
 						onChange={this.handleChange}
 					/>
-					<button type='submit'>Submit</button>
+					<button type='submit'>{text2}</button>
 				</form>
+				<br/>
+				{text3}
+				<br/>
+				<Link to={'/login'}>{text4}</Link>
 			</div>
 		);
 	}
@@ -70,7 +84,8 @@ class Register extends React.Component {
 
 const ConnectedRegister = (props) => (
 	<Consumer>
-		{auth => <Register history={props.history} auth={auth}/>}
+		{value => <Register history={props.history} handleRegister={value.handleRegister} pageId={value.pageConstants.registerId}
+												page={value.page} showPage={value.showPage} clearPage={value.clearPage}/>}
 	</Consumer>
 );
 export default ConnectedRegister;

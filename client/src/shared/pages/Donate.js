@@ -3,10 +3,10 @@ import { Consumer } from "../../Provider";
 
 class Donate extends React.Component {
 
-	pageId = this.props.donateId;
-
 	componentDidMount() {
-		this.props.showPage(this.pageId);
+		const pageId = this.props.pageId;
+		document.getElementById(pageId).focus();
+		this.props.showPage(pageId);
 	}
 
 	componentWillUnmount() {
@@ -52,7 +52,7 @@ class Donate extends React.Component {
 
 const ConnectedDonate = () => (
 	<Consumer>
-		{value => <Donate donateId={value.pageConstants.donateId} showPage={value.showPage} page={value.page}
+		{value => <Donate pageId={value.pageConstants.donateId} showPage={value.showPage} page={value.page}
 											handleChange={value.handleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );

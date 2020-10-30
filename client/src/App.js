@@ -23,6 +23,7 @@ const App = () => (
 		<FetchUser>
 			<Switch>
 				<Route exact path={'/'} component={Home}/>
+				<Route exact path={'/home'} component={Home}/>
 				<Route exact path={'/education'} component={Education}/>
 				<Route exact path={'/health'} component={Health}/>
 				<Route exact path={'/community'} component={Community}/>
