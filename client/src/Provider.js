@@ -16,7 +16,7 @@ export default class Provider extends Component {
 		"communityId": 4,
 		"aboutId": 5,
 		"contactId": 6,
-		"donateId": 7
+		"donateId": 7,
 	}
 
 	handleRegister = (user, history) => {
@@ -67,11 +67,15 @@ export default class Provider extends Component {
 	showPage = (id) => {
 		axios.get(`/api/pages/${id}`)
 		.then(res => {
-			this.setState({page: {...res.data}})
+			this.setState({page: {...res.data}});
 		})
 		.catch(err => {
 			console.log(err);
 		});
+	}
+
+	clearPage = () => {
+		this.setState({page: {}});
 	}
 
 	updatePage = () => {
@@ -125,6 +129,7 @@ export default class Provider extends Component {
 				setUser: (user) => this.setState({user: user}),
 				editPage: this.editPage,
 				showPage: this.showPage,
+				clearPage: this.clearPage,
 				handleChange: this.handleChange,
 				pageConstants: this.pageConstants
 			}}>

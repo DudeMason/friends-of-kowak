@@ -14,6 +14,10 @@ class Home extends React.Component {
 		this.props.showPage(this.pageId);
 	}
 
+	componentWillUnmount() {
+		this.props.clearPage();
+	}
+
 	render() {
 		const {page, handleChange, edit} = this.props;
 		const columns = 40;
@@ -31,7 +35,8 @@ class Home extends React.Component {
 						<div className='prongText'>
 							{!edit ? <>{page.text2}</> :
 							 <textarea name='text2' value={page.text2 ?? ""} rows={rows} cols={columns} onChange={handleChange}/>}
-							<img src={Education} alt='Girl with graduation cap.' className='prongImg' width={imgWidth} height={imgHeight}/>
+							<img src={Education} alt='Girl with graduation cap.' className='prongImg' width={imgWidth}
+									 height={imgHeight}/>
 						</div>
 						<Link to={'/education'} className='prongButton'>Learn More</Link>
 					</div>
@@ -53,7 +58,8 @@ class Home extends React.Component {
 						<div className='prongText'>
 							{!edit ? <>{page.text6}</> :
 							 <textarea name='text6' value={page.text6 ?? ""} rows={rows} cols={columns} onChange={handleChange}/>}
-							<img src={Community} alt='Girl with water bucket.' className='prongImg' width={imgWidth} height={imgHeight}/>
+							<img src={Community} alt='Girl with water bucket.' className='prongImg' width={imgWidth}
+									 height={imgHeight}/>
 						</div>
 						<Link to={'/community'} className='prongButton'>Learn More</Link>
 					</div>
@@ -75,7 +81,7 @@ class Home extends React.Component {
 const ConnectedHome = () => (
 	<Consumer>
 		{value => <Home homeId={value.pageConstants.homeId} showPage={value.showPage} page={value.page}
-										handleChange={value.handleChange} edit={value.edit}/>}
+										handleChange={value.handleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );
 export default ConnectedHome
