@@ -1,23 +1,53 @@
 .threeProng {
-
+    text-align: center;
+    display: flex;
+    text-wrap: normal;
 }
 
 .one {
-
+    /*border: 1px solid black;*/
+    background: #A01B4A;
+    padding: 1.5rem;
+    display: inline;
+    width: 34%;
 }
 
 .two {
-
+    /*border: 1px solid black;*/
+    padding: 1.5rem;
+    background: #3A96E1;
+    display: inline;
+    width: 34%;
 }
 
 .three {
-
+    /*border: 1px solid black;*/
+    padding: 1.5rem;
+    background: #01579C;
+    display: inline;
+    width: 34%;
 }
 
-.prongHeader {
-
+.prongHeader h2 {
+    margin: 4px;
+    font-size: 25pt;
+    /*color: white;*/
 }
 
 .prongText {
+    /*color: white;*/
+}
 
+.prongButton {
+    color: white;
+    padding: .5rem;
+    border-radius: 10px;
+    background: #004175;
+    text-decoration: none;
+    text-align: center;
+}
+
+.prongImg {
+    border-radius: 100%;
+    padding: 2rem;
 }

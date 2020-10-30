@@ -31,7 +31,7 @@
 
 .formButton {
     border: 1px solid black;
-    position: fixed;
+    position: absolute;
     top: 3.1rem;
     right: .1rem;
     padding-bottom: 1.2rem;
@@ -57,14 +57,14 @@
     border-radius: 1rem;
     border: none;
     font-weight: bold;
-    position: fixed;
+    position: absolute;
     right: 30rem;
     top: .5rem;
     color: white;
 }
 
 .login {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 1rem;
     color: white;
