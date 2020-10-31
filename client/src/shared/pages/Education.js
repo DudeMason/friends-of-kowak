@@ -53,7 +53,7 @@ class Education extends React.Component {
 const ConnectedEducation = () => (
 	<Consumer>
 		{value => <Education pageId={value.pageConstants.educationId} showPage={value.showPage} page={value.page}
-										handleChange={value.handleChange} edit={value.edit} clearPage={value.clearPage}/>}
+										handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );
 export default ConnectedEducation

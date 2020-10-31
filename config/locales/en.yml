@@ -32,3 +32,4 @@
 en:
   payment_submitted: "<html> <body> <h2>Your appointment has been submitted.</h2> <h3>Please be aware that we may need to reschedule if there are any scheduling conflicts.</h3> <ul> <br> <u>Name</u>: %{params} %{params2} </br> <br> <u>Phone</u>: %{params3}-%{params4}-%{params5} </br> <br> <u>Date</u>: %{var} </br> <br> <u>Time</u>: %{params6} </br> <br> <u>Company</u>: %{params7} </br> <p> Your message: <br/> \"%{params8}\" </p> </ul> <h3>Thank you for choosing CEO Janitorial!</h3> </body> </html>"
   receipt_sent_notification: "<html> <body> <h2>A client has submitted an appointment.</h2> <ul> <br> <u>Name</u>: %{params} %{params2} </br> <br> <u>Phone</u>: %{params3}-%{params4}-%{params5} </br> <br> <u>Date</u>: %{var} </br> <br> <u>Time</u>: %{params6} </br> <br> <u>Company</u>: %{params7} </br> <p> Their message: <br/> \"%{params8}\" </p> </ul> </body> </html>"
+  password_reset: "<html>YOOOO %{email_address}</html>"

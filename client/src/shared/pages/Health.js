@@ -53,7 +53,7 @@ class Health extends React.Component {
 const ConnectedHealth = () => (
 	<Consumer>
 		{value => <Health pageId={value.pageConstants.healthId} showPage={value.showPage} page={value.page}
-											handleChange={value.handleChange} edit={value.edit} clearPage={value.clearPage}/>}
+											handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );
 export default ConnectedHealth

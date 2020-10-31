@@ -81,7 +81,7 @@ class Home extends React.Component {
 const ConnectedHome = () => (
 	<Consumer>
 		{value => <Home pageId={value.pageConstants.homeId} showPage={value.showPage} page={value.page}
-										handleChange={value.handleChange} edit={value.edit} clearPage={value.clearPage}/>}
+										handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );
 export default ConnectedHome

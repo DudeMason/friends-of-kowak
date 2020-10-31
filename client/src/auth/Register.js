@@ -34,14 +34,9 @@ class Register extends React.Component {
 		handleRegister({email, password, passwordConfirmation}, history);
 	}
 
-	handleChange = (e) => {
-		const {name, value} = e.target;
-		this.setState({[name]: value});
-	}
-
 	render() {
 		const {email, password, passwordConfirmation} = this.state;
-		const {page: {text1, text2, text3, text4}} = this.props;
+		const {page: {text1, text2, text3, text4}, handleChange} = this.props;
 
 		return (
 			<div align='center'>
@@ -53,7 +48,7 @@ class Register extends React.Component {
 						name='email'
 						value={email}
 						placeholder='Email'
-						onChange={this.handleChange}
+						onChange={handleChange}
 					/>
 					<input
 						required
@@ -61,7 +56,7 @@ class Register extends React.Component {
 						value={password}
 						placeholder='Password'
 						type='password'
-						onChange={this.handleChange}
+						onChange={handleChange}
 					/>
 					<input
 						required
@@ -85,7 +80,7 @@ class Register extends React.Component {
 const ConnectedRegister = (props) => (
 	<Consumer>
 		{value => <Register history={props.history} handleRegister={value.handleRegister} pageId={value.pageConstants.registerId}
-												page={value.page} showPage={value.showPage} clearPage={value.clearPage}/>}
+												page={value.page} showPage={value.showPage} clearPage={value.clearPage} handleChange={value.userHandleChange}/>}
 	</Consumer>
 );
 export default ConnectedRegister;

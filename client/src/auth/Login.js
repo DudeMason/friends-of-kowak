@@ -20,14 +20,9 @@ class Login extends React.Component {
 		this.props.handleLogin(this.state, this.props.history);
 	}
 
-	handleChange = (e) => {
-		const {name, value,} = e.target;
-		this.setState({[name]: value,});
-	}
-
 	render() {
 		const {email, password} = this.state;
-		const {page: {text1, text2, text3, text4}} = this.props
+		const {page: {text1, text2, text3, text4, text5, text6}, handleChange} = this.props
 
 		return (
 			<div align='center'>
@@ -39,7 +34,7 @@ class Login extends React.Component {
 						name='email'
 						value={email}
 						placeholder='Email'
-						onChange={this.handleChange}
+						onChange={handleChange}
 					/>
 					<input
 						required
@@ -47,14 +42,17 @@ class Login extends React.Component {
 						value={password}
 						placeholder='Password'
 						type='password'
-						onChange={this.handleChange}
+						onChange={handleChange}
 					/>
 					<button type='submit'>{text2}</button>
 				</form>
 				<br/>
-				{text3}
+				{text3} <Link to={'/register'}>{text4}</Link>
 				<br/>
-				<Link to={'/register'}>{text4}</Link>
+				<br/>
+				{text5}
+				<br/>
+				<Link to={'/reset'}>{text6}</Link>
 			</div>
 		);
 	}
@@ -63,7 +61,7 @@ class Login extends React.Component {
 const ConnectedLogin = (props) => (
 	<Consumer>
 		{value => <Login history={props.history} handleLogin={value.handleLogin} pageId={value.pageConstants.loginId}
-										 page={value.page} showPage={value.showPage} clearPage={value.clearPage}/>}
+										 page={value.page} showPage={value.showPage} clearPage={value.clearPage} handleChange={value.userHandleChange}/>}
 	</Consumer>
 );
 export default ConnectedLogin;

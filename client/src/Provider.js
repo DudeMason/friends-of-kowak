@@ -7,7 +7,7 @@ export const Consumer = Context.Consumer;
 export default class Provider extends Component {
 	state = {user: null, edit: false, page: {}};
 
-	text1; text3; text2;text4; text5; text6; text7; text8; text9; nickname;
+	text1; text3; text2; text4; text5; text6; text7; text8; text9; nickname;
 
 	pageConstants = {
 		"homeId": 1,
@@ -20,7 +20,8 @@ export default class Provider extends Component {
 		"loginId": 8,
 		"registerId": 9,
 		"accountId": 10,
-	}
+		"resetId": 11,
+	};
 
 	handleRegister = (user, history) => {
 		axios.post('/api/auth', user)
@@ -107,18 +108,43 @@ export default class Provider extends Component {
 	}
 
 	sendReceipt = (receiptParams) => {
-		axios.post('/api/receipt_senders', receiptParams)
+		axios.post('/api/receipt_sender', receiptParams)
 		.then(res => {
 			return res.data;
 		})
 		.catch(err => {
 			console.log(err);
-		})
+		});
 	}
 
-	handleChange = (e) => {
+	sendPasswordReset = () => {
+		const {email} = this.state.user
+		axios.get('/api/users')
+		.then(res => {
+			if (res.data.find(u => u.email === email)) {
+				axios.post('/api/password_reset_sender', {email: email})
+				.then(r => {
+					window.location.reload();
+					return r.data;
+				})
+				.catch(err => {
+					console.log(err);
+				});
+			} else {
+				alert('Username does not exist.');
+			}
+		})
+		.catch(err => console.log(err.data));
+	}
+
+	pageHandleChange = (e) => {
 		const {name, value} = e.target;
 		this.setState({page: {...this.state.page, [name]: value}});
+	}
+
+	userHandleChange = (e) => {
+		const {name, value} = e.target;
+		this.setState({user: {...this.state.user, [name]: value}});
 	}
 
 	render() {
@@ -133,8 +159,10 @@ export default class Provider extends Component {
 				editPage: this.editPage,
 				showPage: this.showPage,
 				clearPage: this.clearPage,
-				handleChange: this.handleChange,
-				pageConstants: this.pageConstants
+				pageHandleChange: this.pageHandleChange,
+				userHandleChange: this.userHandleChange,
+				pageConstants: this.pageConstants,
+				sendPasswordReset: this.sendPasswordReset,
 			}}>
 				{this.props.children}
 			</Context.Provider>

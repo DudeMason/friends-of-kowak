@@ -53,7 +53,7 @@ class Community extends React.Component {
 const ConnectedCommunity = () => (
 	<Consumer>
 		{value => <Community pageId={value.pageConstants.communityId} showPage={value.showPage} page={value.page}
-												 handleChange={value.handleChange} edit={value.edit} clearPage={value.clearPage}/>}
+												 handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );
 export default ConnectedCommunity

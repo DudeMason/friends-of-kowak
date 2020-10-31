@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   namespace :api do
     resources :users
     resources :pages
-    resources :receipt_senders, only: [:create]
+    resources :receipt_sender, only: [:create]
+    resources :password_reset_sender, only: [:create]
   end
 
   get '*other', to: 'static#index'

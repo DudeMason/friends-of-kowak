@@ -1,11 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import ProtectedRoute from "./auth/ProtectedRoute";
+import RedirectRoute from "./auth/RedirectRoute";
 import Account from "./auth/Account";
 import Login from './auth/Login';
 import Register from './auth/Register';
+import Reset from "./auth/Reset";
 import FetchUser from './auth/FetchUser';
-import ProtectedRoute from "./auth/ProtectedRoute";
-import RedirectRoute from "./auth/RedirectRoute";
 import Home from './shared/pages/Home';
 import Education from "./shared/pages/Education";
 import Health from "./shared/pages/Health";
@@ -30,6 +31,7 @@ const App = () => (
 				<Route exact path={'/about'} component={About}/>
 				<Route exact path={'/contact'} component={Contact}/>
 				<Route exact path={'/donate'} component={Donate}/>
+				{/*<Route exact path={'/reset'} component={Reset}/>*/}
 				<RedirectRoute exact path={'/login'} component={Login}/>
 				<RedirectRoute exact path={'/register'} component={Register}/>
 				<ProtectedRoute exact path={'/account'} component={Account}/>

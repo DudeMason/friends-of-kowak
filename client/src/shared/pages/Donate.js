@@ -53,7 +53,7 @@ class Donate extends React.Component {
 const ConnectedDonate = () => (
 	<Consumer>
 		{value => <Donate pageId={value.pageConstants.donateId} showPage={value.showPage} page={value.page}
-											handleChange={value.handleChange} edit={value.edit} clearPage={value.clearPage}/>}
+											handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );
 export default ConnectedDonate;

@@ -53,7 +53,7 @@ class About extends React.Component {
 const ConnectedAbout = () => (
 	<Consumer>
 		{value => <About pageId={value.pageConstants.aboutId} showPage={value.showPage} page={value.page}
-										 handleChange={value.handleChange} edit={value.edit} clearPage={value.clearPage}/>}
+										 handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );
 export default ConnectedAbout;
