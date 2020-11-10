@@ -9,23 +9,16 @@ class Account extends React.Component {
 		.catch(() => {
 			this.props.setUser(null);
 		});
-		this.props.showPage(this.props.pageId);
-	}
-
-	componentWillUnmount() {
-		this.props.clearPage();
 	}
 
 	render() {
-		const {page: {text1, text2, text3}, user} = this.props;
+		const {user} = this.props;
 
 		return (
 			<div align='center'>
-				{text1}
+				<h2>Your Account</h2>
 				<br/>
-				{text2}: {user.uid}
-				<br/>
-				{text3}: {user.email}
+				Username: {user.uid}
 			</div>
 		);
 	}
@@ -33,8 +26,7 @@ class Account extends React.Component {
 
 const ConnectedAccount = () => (
 	<Consumer>
-		{value => <Account setUser={value.setUser} user={value.user} pageId={value.pageConstants.accountId}
-											 page={value.page} showPage={value.showPage} clearPage={value.clearPage}/>}
+		{value => <Account setUser={value.setUser} user={value.user}/>}
 	</Consumer>
 );
 export default ConnectedAccount;

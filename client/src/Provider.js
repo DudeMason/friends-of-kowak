@@ -62,7 +62,7 @@ export default class Provider extends Component {
             this.showAlert(messages.passwordShort, types[0]);
             return;
         }
-        axios.post('/api/auth', this.state.aspiringUser)
+        axios.post('/api/auth', {email: email, password: password})
             .then(result => {
                 const userData = result.data.data;
                 const user = {id: userData.id, uid: userData.uid, email: userData.email, provider: userData.provider}
