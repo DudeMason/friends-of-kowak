@@ -17,13 +17,14 @@ class FetchUser extends React.Component {
 					const userData = res.data.data;
 					const user = {id: userData.id, uid: userData.uid, email: userData.email, provider: userData.provider}
 					// Set user's editor permission if it exists
-					axios.get(`/api/users/${res.data.data.id}/permissions`)
+					axios.get(`/api/users/${userData.id}/permissions`)
 					.then(result => {
 						setUser(Object.assign(user, {editor: result.data}));
 					})
 					.catch(() => {
 						setUser(user);
 					});
+
 					this.loaded();
 				})
 				.catch(() => {

@@ -1,40 +1,24 @@
 import React from 'react';
 import {Consumer} from "../Provider";
 
-class Reset extends React.Component {
-
-    componentDidMount() {
-        this.props.showPage(this.props.pageId);
-    }
-
-    componentWillUnmount() {
-        this.props.clearPage();
-    }
-
-    render() {
-        const {page: {text1, text2}, handleChange, email, sendReset} = this.props
-
-        return (
-            <div align='center'>
-                <h2>{text1}</h2>
-                <input
-                    autoFocus
-                    required
-                    name='email'
-                    value={email}
-                    placeholder='Email'
-                    onChange={handleChange}
-                />
-                <button onClick={sendReset}>{text2}</button>
-            </div>
-        );
-    }
-}
+const Reset = ({handleChange, email, sendReset}) => (
+    <div align='center'>
+        <h2>Password Reset</h2>
+        <input
+            autoFocus
+            required
+            name='email'
+            value={email}
+            placeholder='Email'
+            onChange={handleChange}
+        />
+        <button onClick={sendReset}>Send Email</button>
+    </div>
+);
 
 const ConnectedReset = () => (
     <Consumer>
-        {value => <Reset page={value.page} handleChange={value.userHandleChange} email={value.aspiringUser.email}
-                         pageId={value.pageConstants.resetId} clearPage={value.clearPage} showPage={value.showPage}
+        {value => <Reset handleChange={value.userHandleChange} email={value.aspiringUser.email}
                          sendReset={value.sendPasswordReset}/>}
     </Consumer>
 );

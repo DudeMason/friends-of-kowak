@@ -25,10 +25,7 @@ export default class Provider extends Component {
         "aboutId": 5,
         "contactId": 6,
         "donateId": 7,
-        "loginId": 8,
-        "registerId": 9,
         "accountId": 10,
-        "resetId": 11,
     };
 
     alerts = {
@@ -67,8 +64,10 @@ export default class Provider extends Component {
         }
         axios.post('/api/auth', this.state.aspiringUser)
             .then(result => {
+                const userData = result.data.data;
+                const user = {id: userData.id, uid: userData.uid, email: userData.email, provider: userData.provider}
                 this.setState({
-                    user: result.data.data,
+                    user: user,
                     aspiringUser: {email: '', password: '', passwordConfirmation: ''}
                 }, () => {
                     this.closeAlert();
@@ -85,8 +84,16 @@ export default class Provider extends Component {
         const {email, password} = this.state.aspiringUser;
 
         axios.post('/api/auth/sign_in', {email: email, password: password})
-            .then(res => {
-                this.setState({user: res.data.data});
+            .then(result => {
+                const userData = result.data.data;
+                const user = {id: userData.id, uid: userData.uid, email: userData.email, provider: userData.provider}
+                axios.get(`/api/users/${userData.id}/permissions`)
+                    .then(res => {
+                        this.setState({user: Object.assign(user,{editor: res.data})});
+                    })
+                    .catch(() => {
+                        this.setState({user: user});
+                    });
                 this.closeAlert();
                 history.push('/');
             })
