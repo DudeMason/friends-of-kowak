@@ -101,7 +101,7 @@ export default class Provider extends Component {
 			const {id} = this.state.user
 			axios.get(`/api/users/${id}/permissions`)
 			.then(res => {
-				if (res.data === 'Editor') {
+				if (res.data) {
 					this.updatePage();
 				}
 			})

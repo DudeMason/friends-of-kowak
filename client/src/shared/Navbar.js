@@ -31,7 +31,7 @@ const Navbar = ({edit, user, logout, toggleEdit, editPage, history}) => (
 						</div>
 								 :
 						<div>
-							{user.nickname === "Editor" ? <button className='formButton isEdit navItem' onClick={toggleEdit}>✎</button> : null}
+							{user.editor ? <button className='formButton isEdit navItem' onClick={toggleEdit}>✎</button> : null}
 						</div>
 					}
 				</div>
