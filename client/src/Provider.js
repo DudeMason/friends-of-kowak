@@ -175,7 +175,7 @@ export default class Provider extends Component {
     }
 
     sendPasswordReset = () => {
-        const {email} = this.state.user;
+        const {email} = this.state.aspiringUser;
         const {messages, types} = this.alerts;
         axios.get('/api/users')
             .then(res => {

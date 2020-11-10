@@ -34,7 +34,7 @@ const App = ({alertMessage, alertShow, closeAlert, alertType}) => (
 				<Route exact path={'/about'} component={About}/>
 				<Route exact path={'/contact'} component={Contact}/>
 				<Route exact path={'/donate'} component={Donate}/>
-				{/*<Route exact path={'/reset'} component={Reset}/>*/}
+				<Route exact path={'/reset'} component={Reset}/>
 				<RedirectRoute exact path={'/login'} component={Login}/>
 				<RedirectRoute exact path={'/register'} component={Register}/>
 				<ProtectedRoute exact path={'/account'} component={Account}/>
