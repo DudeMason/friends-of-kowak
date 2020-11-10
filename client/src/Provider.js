@@ -74,10 +74,7 @@ export default class Provider extends Component {
                     history.push('/');
                 });
             })
-            .catch(err => {
-                this.showAlert(messages.existingUser, types[0]);
-                console.log(err);
-            });
+            .catch(() => this.showAlert(messages.existingUser, types[0]));
     }
 
     handleLogin = (history) => {
@@ -91,9 +88,7 @@ export default class Provider extends Component {
                     .then(res => {
                         this.setState({user: Object.assign(user,{editor: res.data})});
                     })
-                    .catch(() => {
-                        this.setState({user: user});
-                    });
+                    .catch(() => this.setState({user: user}));
                 this.closeAlert();
                 history.push('/');
             })
@@ -116,9 +111,7 @@ export default class Provider extends Component {
                 this.setState({user: null, edit: false});
                 history.push('/login');
             })
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(err => console.log(err));
     }
 
     toggleEdit = () => {
@@ -130,9 +123,7 @@ export default class Provider extends Component {
             .then(res => {
                 this.setState({page: {...res.data}});
             })
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(err => console.log(err));
     }
 
     clearPage = () => {
@@ -145,9 +136,7 @@ export default class Provider extends Component {
             .then(() => {
                 window.location.reload();
             })
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(err => console.log(err));
     }
 
     editPage = () => {
