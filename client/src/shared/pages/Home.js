@@ -7,7 +7,6 @@ import Community from "../photos/Community.webp"
 import Education from "../photos/Education.webp"
 
 class Home extends React.Component {
-
 	componentDidMount() {
 		const pageId = this.props.pageId;
 		document.getElementById(pageId).focus();
@@ -81,7 +80,7 @@ class Home extends React.Component {
 const ConnectedHome = () => (
 	<Consumer>
 		{value => <Home pageId={value.pageConstants.homeId} showPage={value.showPage} page={value.page}
-										handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
+						handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );
 export default ConnectedHome

@@ -5,7 +5,7 @@ const Context = React.createContext(undefined);
 export const Consumer = Context.Consumer;
 
 export default class Provider extends Component {
-	state = {user: null, edit: false, page: {}};
+	state = {user: null, edit: false, page: {}, aspiringUser: {email: '', password: '', passwordConfirmation: ''}};
 
 	text1; text3; text2; text4; text5; text6; text7; text8; text9; nickname;
 
@@ -23,8 +23,8 @@ export default class Provider extends Component {
 		"resetId": 11,
 	};
 
-	handleRegister = (user, history) => {
-		axios.post('/api/auth', user)
+	handleRegister = (history) => {
+		axios.post('/api/auth', this.state.aspiringUser)
 		.then(result => {
 			this.setState({user: result.data.data});
 			history.push('/');
@@ -35,8 +35,10 @@ export default class Provider extends Component {
 		});
 	}
 
-	handleLogin = (user, history) => {
-		axios.post('/api/auth/sign_in', user)
+	handleLogin = (history) => {
+		const {email, password} = this.state.aspiringUser;
+		
+		axios.post('/api/auth/sign_in', {email: email, password: password})
 		.then(res => {
 			this.setState({user: res.data.data});
 			history.push('/');
@@ -44,7 +46,7 @@ export default class Provider extends Component {
 		.catch(() => {
 			axios.get('/api/users')
 			.then(res => {
-				if (res.data.find(u => user.email === u.email)) {
+				if (res.data.find(u => email === u.email)) {
 					alert('Incorrect password.');
 				} else {
 					alert('Username does not exist.');
@@ -95,12 +97,17 @@ export default class Provider extends Component {
 
 	editPage = () => {
 		axios.get('/api/auth/validate_token')
-		.then(res => {
-			if (res.data.data.nickname) {
-				this.updatePage();
-			} else {
+		.then(() => {
+			const {id} = this.state.user
+			axios.get(`/api/users/${id}/permissions`)
+			.then(res => {
+				if (res.data === 'Editor') {
+					this.updatePage();
+				}
+			})
+			.catch(() => {
 				alert('You are not authorized to edit pages.');
-			}
+			});
 		})
 		.catch(() => {
 			alert('Must be a authorized user to edit!');
@@ -144,7 +151,7 @@ export default class Provider extends Component {
 
 	userHandleChange = (e) => {
 		const {name, value} = e.target;
-		this.setState({user: {...this.state.user, [name]: value}});
+		this.setState({aspiringUser: {...this.state.aspiringUser, [name]: value}});
 	}
 
 	render() {

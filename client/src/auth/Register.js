@@ -3,8 +3,6 @@ import { Consumer } from "../Provider";
 import { Link } from "react-router-dom";
 
 class Register extends React.Component {
-	state = {email: '', password: '', passwordConfirmation: ''};
-
 	componentDidMount() {
 		this.props.showPage(this.props.pageId);
 	}
@@ -15,8 +13,7 @@ class Register extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		const {email, password, passwordConfirmation} = this.state;
-		const {handleRegister, history,} = this.props;
+		const {handleRegister, history, aspiringUser: {email, password, passwordConfirmation}} = this.props;
 
 		if (!/.@\w+\.[^0-9]{2}/i.test(email)){
 			alert('Must be an email address.');
@@ -31,12 +28,11 @@ class Register extends React.Component {
 			return;
 		}
 
-		handleRegister({email, password, passwordConfirmation}, history);
+		handleRegister(history);
 	}
 
 	render() {
-		const {email, password, passwordConfirmation} = this.state;
-		const {page: {text1, text2, text3, text4}, handleChange} = this.props;
+		const {page: {text1, text2, text3, text4}, handleChange, aspiringUser: {email, password, passwordConfirmation}} = this.props;
 
 		return (
 			<div align='center'>
@@ -64,7 +60,7 @@ class Register extends React.Component {
 						value={passwordConfirmation}
 						placeholder='Confirmation'
 						type='password'
-						onChange={this.handleChange}
+						onChange={handleChange}
 					/>
 					<button type='submit'>{text2}</button>
 				</form>
@@ -79,8 +75,8 @@ class Register extends React.Component {
 
 const ConnectedRegister = (props) => (
 	<Consumer>
-		{value => <Register history={props.history} handleRegister={value.handleRegister} pageId={value.pageConstants.registerId}
-												page={value.page} showPage={value.showPage} clearPage={value.clearPage} handleChange={value.userHandleChange}/>}
+		{value => <Register history={props.history} handleRegister={value.handleRegister} pageId={value.pageConstants.registerId} aspiringUser={value.aspiringUser}
+							page={value.page} showPage={value.showPage} clearPage={value.clearPage} handleChange={value.userHandleChange}/>}
 	</Consumer>
 );
 export default ConnectedRegister;

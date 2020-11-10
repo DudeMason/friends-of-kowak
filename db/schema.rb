@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2120_01_38_214131) do
+ActiveRecord::Schema.define(version: 2120_01_38_214133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "donations", force: :cascade do |t|
+    t.string "description"
+    t.string "category"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_donations_on_user_id"
+  end
 
   create_table "pages", force: :cascade do |t|
     t.string "text1"
@@ -27,6 +36,14 @@ ActiveRecord::Schema.define(version: 2120_01_38_214131) do
     t.string "text9"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.string "description"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_permissions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,4 +76,6 @@ ActiveRecord::Schema.define(version: 2120_01_38_214131) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "donations", "users"
+  add_foreign_key "permissions", "users"
 end

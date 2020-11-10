@@ -3,8 +3,6 @@ import { Consumer } from "../Provider";
 import { Link } from "react-router-dom";
 
 class Login extends React.Component {
-	state = {email: '', password: ''};
-
 	componentDidMount() {
 		const pageId = this.props.pageId;
 		document.getElementById(pageId).focus();
@@ -17,12 +15,11 @@ class Login extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.props.handleLogin(this.state, this.props.history);
+		this.props.handleLogin(this.props.history);
 	}
 
 	render() {
-		const {email, password} = this.state;
-		const {page: {text1, text2, text3, text4, text5, text6}, handleChange} = this.props
+		const {page: {text1, text2, text3, text4, text5, text6}, handleChange, aspiringUser: {email, password}} = this.props
 
 		return (
 			<div align='center'>
@@ -60,8 +57,8 @@ class Login extends React.Component {
 
 const ConnectedLogin = (props) => (
 	<Consumer>
-		{value => <Login history={props.history} handleLogin={value.handleLogin} pageId={value.pageConstants.loginId}
-										 page={value.page} showPage={value.showPage} clearPage={value.clearPage} handleChange={value.userHandleChange}/>}
+		{value => <Login history={props.history} handleLogin={value.handleLogin} pageId={value.pageConstants.loginId} aspiringUser={value.aspiringUser}
+						page={value.page} showPage={value.showPage} clearPage={value.clearPage} handleChange={value.userHandleChange}/>}
 	</Consumer>
 );
 export default ConnectedLogin;
