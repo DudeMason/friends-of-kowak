@@ -2,7 +2,7 @@ class Api::PermissionsController < ApplicationController
     before_action :set_user
 
     def index
-        render json: @user.permissions.find(1).description
+        render json: @user.permissions.find(params[:user_id]).description
     end
 
     private
