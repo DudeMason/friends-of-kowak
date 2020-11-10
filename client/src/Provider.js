@@ -25,7 +25,6 @@ export default class Provider extends Component {
         "aboutId": 5,
         "contactId": 6,
         "donateId": 7,
-        "accountId": 10,
     };
 
     alerts = {
