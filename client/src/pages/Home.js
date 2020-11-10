@@ -1,10 +1,10 @@
 import React from 'react';
 import '../css/Home.css';
 import { Link } from "react-router-dom";
-import { Consumer } from "../../Provider";
-import Health from "../photos/Health.webp"
-import Community from "../photos/Community.webp"
-import Education from "../photos/Education.webp"
+import { Consumer } from "../Provider";
+import Health from "../shared/photos/Health.webp"
+import Community from "../shared/photos/Community.webp"
+import Education from "../shared/photos/Education.webp"
 
 class Home extends React.Component {
 	componentDidMount() {

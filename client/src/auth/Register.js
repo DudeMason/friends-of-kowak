@@ -13,21 +13,7 @@ class Register extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		const {handleRegister, history, aspiringUser: {email, password, passwordConfirmation}} = this.props;
-
-		if (!/.@\w+\.[^0-9]{2}/i.test(email)){
-			alert('Must be an email address.');
-			return;
-		}
-		if (password !== passwordConfirmation) {
-			alert('Passwords do not match.');
-			return;
-		}
-		if (password.length < 6) {
-			alert('Password is too short.');
-			return;
-		}
-
+		const {handleRegister, history} = this.props;
 		handleRegister(history);
 	}
 

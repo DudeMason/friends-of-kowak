@@ -1,7 +1,7 @@
 import React from 'react';
-import { Consumer } from "../../Provider";
+import { Consumer } from "../Provider";
 
-class Contact extends React.Component {
+class Health extends React.Component {
 
 	componentDidMount() {
 		const pageId = this.props.pageId;
@@ -50,11 +50,10 @@ class Contact extends React.Component {
 	}
 }
 
-const ConnectedContact = () => (
+const ConnectedHealth = () => (
 	<Consumer>
-		{value => <Contact pageId={value.pageConstants.contactId} showPage={value.showPage} page={value.page}
-											 handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
+		{value => <Health pageId={value.pageConstants.healthId} showPage={value.showPage} page={value.page}
+											handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );
-export default ConnectedContact;
-
+export default ConnectedHealth

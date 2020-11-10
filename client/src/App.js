@@ -7,20 +7,23 @@ import Login from './auth/Login';
 import Register from './auth/Register';
 import Reset from "./auth/Reset";
 import FetchUser from './auth/FetchUser';
-import Home from './shared/pages/Home';
-import Education from "./shared/pages/Education";
-import Health from "./shared/pages/Health";
-import Community from "./shared/pages/Community";
-import About from './shared/pages/About';
-import Contact from './shared/pages/Contact';
-import Donate from "./shared/pages/Donate";
+import Home from './pages/Home';
+import Education from "./pages/Education";
+import Health from "./pages/Health";
+import Community from "./pages/Community";
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Donate from "./pages/Donate";
 import NoMatch from './shared/NoMatch';
-import Navbar from './shared/Navbar';
+import Alert from "./partials/Alert";
+import Navbar from "./shared/Navbar";
 import './App.css';
+import {Consumer} from "./Provider";
 
-const App = () => (
+const App = ({alertMessage, alertShow, closeAlert, alertType}) => (
 	<div>
 		<Navbar/>
+		{alertShow ? <Alert message={alertMessage} closeAlert={closeAlert} alertType={alertType}/> : null}
 		<FetchUser>
 			<Switch>
 				<Route exact path={'/'} component={Home}/>
@@ -40,4 +43,10 @@ const App = () => (
 		</FetchUser>
 	</div>
 );
-export default App;
+const ConnectedApp = () => (
+	<Consumer>
+		{value => <App closeAlert={value.closeAlert} alertShow={value.alertShow} alertType={value.alertType}
+					   alertMessage={value.alertMessage}/>}
+	</Consumer>
+);
+export default ConnectedApp;

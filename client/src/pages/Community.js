@@ -1,5 +1,5 @@
 import React from 'react';
-import { Consumer } from "../../Provider";
+import { Consumer } from "../Provider";
 
 class Community extends React.Component {
 

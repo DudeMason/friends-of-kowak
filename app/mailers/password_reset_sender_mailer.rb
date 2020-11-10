@@ -33,7 +33,7 @@ class PasswordResetSenderMailer < ApplicationMailer
 			],
 			'mail_settings': {
 				'sandbox_mode': {
-					'enable': false
+					'enable': true
 				}
 			}
 		}

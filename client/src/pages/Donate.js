@@ -1,7 +1,7 @@
 import React from 'react';
-import { Consumer } from "../../Provider";
+import { Consumer } from "../Provider";
 
-class Health extends React.Component {
+class Donate extends React.Component {
 
 	componentDidMount() {
 		const pageId = this.props.pageId;
@@ -50,10 +50,11 @@ class Health extends React.Component {
 	}
 }
 
-const ConnectedHealth = () => (
+const ConnectedDonate = () => (
 	<Consumer>
-		{value => <Health pageId={value.pageConstants.healthId} showPage={value.showPage} page={value.page}
+		{value => <Donate pageId={value.pageConstants.donateId} showPage={value.showPage} page={value.page}
 											handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );
-export default ConnectedHealth
+export default ConnectedDonate;
+

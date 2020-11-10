@@ -1,7 +1,7 @@
 import React from 'react';
-import { Consumer } from "../../Provider";
+import { Consumer } from "../Provider";
 
-class Education extends React.Component {
+class About extends React.Component {
 
 	componentDidMount() {
 		const pageId = this.props.pageId;
@@ -50,10 +50,10 @@ class Education extends React.Component {
 	}
 }
 
-const ConnectedEducation = () => (
+const ConnectedAbout = () => (
 	<Consumer>
-		{value => <Education pageId={value.pageConstants.educationId} showPage={value.showPage} page={value.page}
-										handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
+		{value => <About pageId={value.pageConstants.aboutId} showPage={value.showPage} page={value.page}
+										 handleChange={value.pageHandleChange} edit={value.edit} clearPage={value.clearPage}/>}
 	</Consumer>
 );
-export default ConnectedEducation
+export default ConnectedAbout;

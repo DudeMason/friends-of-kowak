@@ -1,0 +1,29 @@
+.alert {
+    padding: 1rem;
+    margin: 0;
+    color: black;
+    text-align: center;
+}
+
+.success {
+    background: rgb(100, 250, 175);
+}
+
+.error {
+    background: rgb(250, 110, 110);
+}
+
+.alertButton {
+    background: none;
+    border: none;
+    font-size: medium;
+    padding-top: 3px;
+    border-radius: 20%;
+    position: fixed;
+    right: 5%;
+}
+
+.alertButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px dimgrey;
+}
