@@ -191,11 +191,11 @@ export default class Provider extends Component {
     }
 
     closeAlert = () => {
-        this.setState({alertMessage: '', alertType: '', alertShow: false})
+        this.setState({alertMessage: '', alertType: '', alertShow: false});
     }
 
     showAlert = (message, alertType) => {
-        this.setState({alertMessage: message, alertType: alertType, alertShow: true})
+        this.setState({alertMessage: message, alertType: alertType, alertShow: true});
     }
 
     pageHandleChange = (e) => {
